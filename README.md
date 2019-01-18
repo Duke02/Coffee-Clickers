@@ -1,2 +1,2 @@
 # Coffee Clickers
-Semester Project for my team in CS 321 for the Spring 2019 semester
+A game based off of [Cookie Clickers](http://orteil.dashnet.org/cookieclicker/) but with a theme of coffee.
