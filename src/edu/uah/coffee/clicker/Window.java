@@ -6,13 +6,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.MouseInfo;
 import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
 import javax.swing.JComponent;
+
+import doNotTouchMeYall.Temp;
 
 public class Window extends JComponent {
 	private static final long serialVersionUID = 2908654408975964223L;
@@ -20,12 +17,6 @@ public class Window extends JComponent {
 	public int mouseY;
 
 	public int fontSize = 64;
-
-	ArrayList<Bean> beans = CoffeeClickerMain.beans;
-	ArrayList<DanWord> danWords = CoffeeClickerMain.danWords;
-	ArrayList<Star> stars = CoffeeClickerMain.stars;
-
-	public BufferedImage dan;
 
 	AffineTransform transform;
 
@@ -43,49 +34,17 @@ public class Window extends JComponent {
 		mouseY = MouseInfo.getPointerInfo().getLocation().y - this.getLocationOnScreen().y;
 		CoffeeClickerMain.mouseX = mouseX;
 		CoffeeClickerMain.mouseY = mouseY;
+		
+		Temp.draw(g);
 
-		g.setColor(new Color(255 - red, 255 - green, 255 - blue));
-		for (int i = stars.size() - 1; i > -1; --i) {
-			stars.get(i).update();
-			g.fillOval((int) (stars.get(i).x), (int) (stars.get(i).y), (int) stars.get(i).diameter,
-					(int) stars.get(i).diameter);
-		}
-
-		g.setColor(new Color(255 - red, 255 - green, 255 - blue));
-		for (int i = danWords.size() - 1; i > -1; --i) {
-			danWords.get(i).update();
-			if (danWords.get(i).visible == true) {
-				g.drawString(danWords.get(i).word, (int) (danWords.get(i).x + Math.random() * 10 - 5),
-						(int) (danWords.get(i).y + Math.random() * 10 - 5));
-			}
-		}
-
-		transform = graphics.getTransform();
-		for (int i = beans.size() - 1; i > -1; --i) {
-			beans.get(i).update();
-
-			int x = (int) beans.get(i).x;
-			int y = (int) beans.get(i).y;
-			int radius = (int) beans.get(i).diameter;
-
-			graphics.rotate(beans.get(i).rotation, x, y);
-			g.drawImage(dan, x - radius / 2, y - radius / 2, radius, radius, null);
-			graphics.setTransform(transform);
-		}
-
+		g.setColor(new Color(255, 255, 255));
 		g.setFont(new Font("TimesNewRoman", Font.PLAIN, fontSize));
-
+		
 		g.drawString("elapsed time: " + round(CoffeeClickerMain.time, 1), fontSize, fontSize);
 		g.drawString("counter: " + CoffeeClickerMain.counter, fontSize, fontSize * 2);
 	}
 
 	public Window() {
-		File file = new File("res/dan.png");
-		try {
-			dan = ImageIO.read(file);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public double round(double number, int decimalPlaces) {

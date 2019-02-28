@@ -1,4 +1,6 @@
-package edu.uah.coffee.clicker;
+package doNotTouchMeYall;
+
+import edu.uah.coffee.clicker.CoffeeClickerMain;
 
 public class DanWord {
 	public DanWord() {

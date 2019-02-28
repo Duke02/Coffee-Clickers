@@ -1,4 +1,6 @@
-package edu.uah.coffee.clicker;
+package doNotTouchMeYall;
+
+import edu.uah.coffee.clicker.CoffeeClickerMain;
 
 public class Star {
 	public Star() {
@@ -12,7 +14,7 @@ public class Star {
 	public double diameter;
 
 	public void update() {
-		x += 1 - diameter / 1000;
+		x += 1 - diameter / 10;
 		if (x + diameter / 2 < 0)
 			x = CoffeeClickerMain.width + diameter / 2 - 1;
 		else if (x - diameter / 2 > CoffeeClickerMain.width)
