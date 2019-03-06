@@ -5,10 +5,6 @@ import java.io.FileWriter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-/**
- *
- * @author Brandenburg
- */
 public class JSONFile {
     public static void main(String[] args) {
         //create JSON object and put the value
@@ -32,7 +28,7 @@ public class JSONFile {
         //write all to a file
         
         try { 
-            FileWriter fileWriter = new FileWriter("Coffee_json.json");
+            FileWriter fileWriter = new FileWriter("CoffeeJSON.json");
             fileWriter.write(jsonObject.toString());
             fileWriter.flush();
             fileWriter.close();
