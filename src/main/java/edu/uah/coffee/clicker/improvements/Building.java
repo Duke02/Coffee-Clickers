@@ -1,4 +1,4 @@
-package edu.uah.coffee.clicker;
+package edu.uah.coffee.clicker.improvements;
 
 /**
  *
