@@ -7,8 +7,8 @@ public class BuildingManager extends AbstractManager
     private double CookiesPerSecond;
     private int BuildingID;
     private ArrayList<String> BuildingName;
-    
-    public BuildingManager(double CookiesPerSecond, int BuildingID, List BuildingName)
+
+	public BuildingManager(double CookiesPerSecond, int BuildingID, List BuildingName)
     {
         CookiesPerSecond = CookiesPerSecond;
         BuildingID = BuildingID;
