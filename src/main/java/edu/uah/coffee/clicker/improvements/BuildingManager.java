@@ -1,62 +1,22 @@
 package edu.uah.coffee.clicker.improvements;
+
 import java.util.ArrayList;
+import java.util.List;
 
-public class BuildingManager extends AbstractManager
-{
-    private double CookiesPerSecond;
-    private int BuildingID;
-    private String BuildingName;
-    private ArrayList BuildingInfo = new ArrayList();
-    
-    public BuildingManager(double CookiesPerSecond, int BuildingID, String BuildingName)
-    {
-        CookiesPerSecond = CookiesPerSecond;
-        BuildingID = BuildingID;
-        BuildingName = BuildingName;
-        BuildingInfo = (ArrayList) BuildingInfo;
-    }
+public class BuildingManager extends AbstractManager {
+	private List< Building > buildings;
 
-    public double getCookiesPerSecond()
-    {
-        return CookiesPerSecond;
-    }
-    
-    public void setCookiesPerSecond(double CookiesPerSecond)
-    {
-        CookiesPerSecond = CookiesPerSecond;
-    }
-    
-    public int getBuildingId()
-    {
-        return BuildingID;
-    }
-    
-    public void setBuildingId(int BuildingId)
-    {
-        BuildingID = BuildingId;
-    }
-    
-    public String getBuildingName()
-    {
-        return BuildingName;
-    }
-    
-    public void setBuildingName(String BuildingName)
-    {
-        BuildingName = BuildingName;
-    }
-    public void setBuildingInfo(int BuildingID, String BuildingName, double CookiesPerSecond, ArrayList BuildingInfo)
-    {
-        ArrayList  BuildingArray = new ArrayList();
+	public BuildingManager () {
+		this.buildings = new ArrayList< Building >();
+	}
 
-        BuildingArray.add(BuildingID);
-        BuildingArray.add(BuildingName);
-        BuildingArray.add(CookiesPerSecond);
-        
-        BuildingInfo = (ArrayList) BuildingArray;
-    }
-    
-    
-    
-    
+	public Building getBuilding ( int buildingId ) {
+		for ( Building building : this.buildings ) {
+			if ( building.getId() == buildingId ) {
+				return building;
+			}
+		}
+		return null;
+	}
+
 }
