@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 public class View implements Runnable {
 	private JFrame frame;
+	private ImportantPanel importantPanel;
 	private NewsPanel newsPanel;
 	private GamePanel gamePanel;
 
@@ -13,8 +14,10 @@ public class View implements Runnable {
 		frame.setLocation(0, 0);
 		frame.setLayout(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Coffee Clickers");
+		frame.setTitle("CC");
 
+		importantPanel=new ImportantPanel();
+		frame.add(importantPanel);
 		newsPanel = new NewsPanel();
 		frame.add(newsPanel);
 		gamePanel = new GamePanel();
