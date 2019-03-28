@@ -1,5 +1,9 @@
 
-package main.java.edu.uah.coffee.clicker;
+//how did this class appear in this branch?
+//who knows.
+//I need to PUSH
+
+/*package main.java.edu.uah.coffee.clicker;
 
 import java.io.FileWriter;
 import org.json.JSONArray;
@@ -39,3 +43,4 @@ public class JSONFile {
     }
             
 }
+*/

@@ -1,5 +1,9 @@
 
-package main.java.edu.uah.coffee.clicker;
+//how did this class appear in this branch?
+//who knows.
+//I need to PUSH
+
+/*package main.java.edu.uah.coffee.clicker;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -41,4 +45,4 @@ public class ReadJSONFile {
         catch(Exception e) { e.printStackTrace(); }
         
     }
-}
+}*/
