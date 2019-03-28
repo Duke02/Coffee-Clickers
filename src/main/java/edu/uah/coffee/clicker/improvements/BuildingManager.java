@@ -1,7 +1,5 @@
 package edu.uah.coffee.clicker.improvements;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 public class BuildingManager extends AbstractManager
 {
@@ -9,7 +7,6 @@ public class BuildingManager extends AbstractManager
     private int BuildingID;
     private String BuildingName;
     private ArrayList BuildingInfo = new ArrayList();
-    
     
     public BuildingManager(double CookiesPerSecond, int BuildingID, String BuildingName)
     {
