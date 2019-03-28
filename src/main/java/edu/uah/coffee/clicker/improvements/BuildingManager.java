@@ -7,23 +7,20 @@ import com.google.gson.reflect.TypeToken;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class BuildingManager extends AbstractManager {
-	private List< Building > buildings;
+	private Map< Integer, Building > buildings;
 
 	public BuildingManager () {
-		this.buildings = new ArrayList< Building >();
+
+		this.buildings = new HashMap< Integer, Building >();
 	}
 
 	public Building getBuilding ( int buildingId ) {
-		for ( Building building : this.buildings ) {
-			if ( building.getId() == buildingId ) {
-				return building;
-			}
-		}
-		return null;
+		return this.buildings.get( buildingId );
 	}
 
 	public void parseJsonFile ( String filename ) {
@@ -32,7 +29,10 @@ public class BuildingManager extends AbstractManager {
 			Type buildingListType = new TypeToken< List< Building > >() {
 			}.getType();
 			Gson gson = new Gson();
-			this.buildings = gson.fromJson( file, buildingListType );
+			List< Building > temporaryBuildings = gson.fromJson( file, buildingListType );
+			for ( Building building : temporaryBuildings ) {
+				this.buildings.put( building.getId(), building );
+			}
 		} catch ( FileNotFoundException e ) {
 			System.err.println( "Cannot find Building JSON file with filename " + filename + "!" );
 			e.printStackTrace();
