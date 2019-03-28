@@ -1,4 +1,5 @@
 package edu.uah.coffee.clicker.improvements;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,37 +7,54 @@ public class BuildingManager extends AbstractManager
 {
     private double CookiesPerSecond;
     private int BuildingID;
-    private ArrayList<String> BuildingName;
+    private String BuildingName;
+    private ArrayList<String[]> BuildingInfo = new ArrayList<String[]>();
     
-    public BuildingManager(double CookiesPerSecond, int BuildingID, List BuildingName)
+    
+    public BuildingManager(double CookiesPerSecond, int BuildingID, String BuildingName)
     {
         CookiesPerSecond = CookiesPerSecond;
         BuildingID = BuildingID;
-        BuildingName = (ArrayList<String>) BuildingName;
+        BuildingName = BuildingName;
+        BuildingInfo = (ArrayList<String[]>) BuildingInfo;
     }
 
-    public double getEmployeeName()
+    public double getCookiesPerSecond()
     {
         return CookiesPerSecond;
     }
-    public void setEmployeeName(double CookiesPerSecond)
+    
+    public void setCookiesPerSecond(double CookiesPerSecond)
     {
         CookiesPerSecond = CookiesPerSecond;
     }
+    
     public int getBuildingId()
     {
         return BuildingID;
     }
+    
     public void setBuildingId(int BuildingId)
     {
         BuildingID = BuildingId;
     }
-    public List<String> getBuildingName()
+    
+    public String getBuildingName()
     {
         return BuildingName;
     }
-    public void setBuildingName(List<String> BuildingName)
+    
+    public void setBuildingName(String BuildingName)
     {
-        BuildingName = (ArrayList<String>) BuildingName;
+        BuildingName = BuildingName;
     }
+    public void setBuildingInfo(int BuildingID, String BuildingName, double CookiesPerSecond)
+    {
+        
+        
+    }
+    
+    
+    
+    
 }
