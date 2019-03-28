@@ -8,7 +8,7 @@ public class BuildingManager extends AbstractManager
     private double CookiesPerSecond;
     private int BuildingID;
     private String BuildingName;
-    private ArrayList<String[]> BuildingInfo = new ArrayList<String[]>();
+    private ArrayList BuildingInfo = new ArrayList();
     
     
     public BuildingManager(double CookiesPerSecond, int BuildingID, String BuildingName)
@@ -16,7 +16,7 @@ public class BuildingManager extends AbstractManager
         CookiesPerSecond = CookiesPerSecond;
         BuildingID = BuildingID;
         BuildingName = BuildingName;
-        BuildingInfo = (ArrayList<String[]>) BuildingInfo;
+        BuildingInfo = (ArrayList) BuildingInfo;
     }
 
     public double getCookiesPerSecond()
@@ -48,9 +48,15 @@ public class BuildingManager extends AbstractManager
     {
         BuildingName = BuildingName;
     }
-    public void setBuildingInfo(int BuildingID, String BuildingName, double CookiesPerSecond)
+    public void setBuildingInfo(int BuildingID, String BuildingName, double CookiesPerSecond, ArrayList BuildingInfo)
     {
+        ArrayList  BuildingArray = new ArrayList();
+
+        BuildingArray.add(BuildingID);
+        BuildingArray.add(BuildingName);
+        BuildingArray.add(CookiesPerSecond);
         
+        BuildingInfo = (ArrayList) BuildingArray;
     }
     
     
