@@ -15,7 +15,7 @@ public class View implements Runnable {
 	private GamePanel gamePanel;
 
 	public View() {
-		
+		//test comment. Last commit and push failed and I can't try again without making a change.
 		frame = new JFrame();
 		frame.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
 		frame.setLocation(0, 0);
