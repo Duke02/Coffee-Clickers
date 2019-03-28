@@ -3,8 +3,7 @@ package edu.uah.coffee.clicker.improvements;
 /**
  * @author trystanmay
  */
-public class Building {
-
+public class Building implements Improvement {
 
 	protected int id;
 	protected double cookiesPerSecond;
@@ -43,6 +42,4 @@ public class Building {
 	public void setName ( String name ) {
 		this.name = name;
 	}
-
-
 }
