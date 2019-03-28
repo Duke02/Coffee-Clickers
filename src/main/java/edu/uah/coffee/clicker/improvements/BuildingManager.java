@@ -26,4 +26,16 @@ public class BuildingManager extends AbstractManager {
 		return null;
 	}
 
+	public void parseJsonFile ( String filename ) {
+		try {
+			FileReader file = new FileReader( filename );
+			Type buildingListType = new TypeToken< List< Building > >() {
+			}.getType();
+			Gson gson = new Gson();
+			this.buildings = gson.fromJson( file, buildingListType );
+		} catch ( FileNotFoundException e ) {
+			System.err.println( "Cannot find Building JSON file with filename " + filename + "!" );
+			e.printStackTrace();
+		}
+	}
 }
