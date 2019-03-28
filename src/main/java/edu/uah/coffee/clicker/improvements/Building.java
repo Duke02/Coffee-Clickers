@@ -5,7 +5,6 @@ package edu.uah.coffee.clicker.improvements;
  */
 public class Building {
 
-
 	protected int id;
 	protected double cookiesPerSecond;
 	protected String name;
@@ -43,6 +42,4 @@ public class Building {
 	public void setName ( String name ) {
 		this.name = name;
 	}
-
-
 }
