@@ -1,16 +1,23 @@
 package edu.uah.coffee.clicker.graphics;
 
+import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 
 public class View implements Runnable {
+	private static final Toolkit TOOLKIT=Toolkit.getDefaultToolkit();
+	private static final int SCREEN_WIDTH=TOOLKIT.getScreenSize().width;
+	private static final int SCREEN_HEIGHT=TOOLKIT.getScreenSize().height;
+	
 	private JFrame frame;
 	private ImportantPanel importantPanel;
 	private NewsPanel newsPanel;
 	private GamePanel gamePanel;
 
 	public View() {
+		//test comment. Last commit and push failed and I can't try again without making a change.
 		frame = new JFrame();
-		frame.setSize(1000, 1000);
+		frame.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
 		frame.setLocation(0, 0);
 		frame.setLayout(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

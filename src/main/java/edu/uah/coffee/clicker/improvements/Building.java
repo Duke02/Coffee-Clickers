@@ -3,7 +3,7 @@ package edu.uah.coffee.clicker.improvements;
 /**
  * @author trystanmay
  */
-public class Building {
+public class Building implements Improvement {
 
 	protected int id;
 	protected double cookiesPerSecond;
