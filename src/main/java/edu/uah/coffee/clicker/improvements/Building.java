@@ -5,8 +5,6 @@ package edu.uah.coffee.clicker.improvements;
  */
 public class Building {
 
-public static void main(String[] args){
-}
 	protected int id;
 	protected double cookiesPerSecond;
 	protected String name;
