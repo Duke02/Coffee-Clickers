@@ -51,7 +51,6 @@ public class BuildingManager extends AbstractManager
     public void setBuildingInfo(int BuildingID, String BuildingName, double CookiesPerSecond)
     {
         
-        
     }
     
     
