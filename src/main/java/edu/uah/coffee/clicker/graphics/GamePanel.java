@@ -14,8 +14,12 @@ public class GamePanel extends CoffeeClickerPanel {
 
 	public GamePanel () {
 		super( Constants.GAME_PANEL_NAME );
-		setLayout( new BorderLayout( 100, 100 ) );
+		setLayout( new BorderLayout( 250, 250 ) );
 		//setPreferredSize( new Dimension( 500, 500 ) );
+
+		this.add( new SpacePanel( 500, 100 ), BorderLayout.EAST );
+		this.add( new SpacePanel( 500, 100 ), BorderLayout.WEST );
+		this.add( new SpacePanel( 100, 500 ), BorderLayout.SOUTH );
 
 		countButton = new JButton();
 		countButton.setLayout( null );
@@ -29,9 +33,7 @@ public class GamePanel extends CoffeeClickerPanel {
 		currentCoffeeBeans.setText( "Coffee Beans: 0" );
 		this.add( currentCoffeeBeans, BorderLayout.NORTH );
 
-		this.add( new JPanel(), BorderLayout.EAST );
-		this.add( new JPanel(), BorderLayout.WEST );
-		this.add( new JPanel(), BorderLayout.SOUTH );
+
 	}
 
 	public void addController ( Controller controller ) {
