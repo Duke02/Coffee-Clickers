@@ -26,7 +26,7 @@ public abstract class Controller implements Observer, PropertyChangeListener {
 		return this.views.get( name );
 	}
 
-	protected void addView ( CoffeeClickerPanel view ) {
+	public void addView ( CoffeeClickerPanel view ) {
 		view.addController( this );
 		this.views.put( view.getName(), view );
 	}

@@ -50,4 +50,8 @@ public class View implements Runnable {
 	public void run () {
 
 	}
+
+	public CoffeeClickerPanel getPanel ( String name ) {
+		return this.panels.get( name );
+	}
 }
