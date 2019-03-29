@@ -1,15 +1,18 @@
 package edu.uah.coffee.clicker.improvements;
 
+import edu.uah.coffee.clicker.CoffeeClickerModel;
+
 /**
  * @author trystanmay
  */
-public class Building implements Improvement {
+public class Building extends CoffeeClickerModel implements Improvement {
 
 	protected int id;
 	protected double cookiesPerSecond;
 	protected String name;
 
 	public Building ( String name, int id, double cookiesPerSecond ) {
+		super( name );
 		this.name = name;
 		this.id = id;
 		this.cookiesPerSecond = cookiesPerSecond;

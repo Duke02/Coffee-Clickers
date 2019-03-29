@@ -1,12 +1,20 @@
 package edu.uah.coffee.clicker.improvements;
 
+import edu.uah.coffee.clicker.CoffeeClickerModel;
+
 /**
  * @author trystanmay
  */
-public class Upgrade implements Improvement {
+public class Upgrade extends CoffeeClickerModel implements Improvement {
 
 	private int id;
 	private String name;
+
+	public Upgrade ( String name, int id ) {
+		super( name );
+		this.name = name;
+		this.id = id;
+	}
 
 
 	public int getId () {

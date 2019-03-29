@@ -2,8 +2,25 @@
 
 package edu.uah.coffee.clicker.graphics;
 
-import javax.swing.JPanel;
+import edu.uah.coffee.clicker.controller.Controller;
+import javafx.beans.InvalidationListener;
 
-public class ImportantPanel extends JPanel{
+public class ImportantPanel extends CoffeeClickerPanel {
 
+
+	public ImportantPanel () {
+		super( "ImportantPanel" );
+	}
+
+	public void setController ( Controller controller ) {
+
+	}
+
+	public void addListener ( InvalidationListener listener ) {
+
+	}
+
+	public void removeListener ( InvalidationListener listener ) {
+
+	}
 }
