@@ -1,7 +1,9 @@
 package edu.uah.coffee.clicker.controller;
 
+import edu.uah.coffee.clicker.Constants;
 import edu.uah.coffee.clicker.Player;
 
+import java.beans.PropertyChangeEvent;
 import java.util.Observable;
 
 /**
@@ -9,15 +11,20 @@ import java.util.Observable;
  */
 public class PlayerController extends Controller {
 
+
 	Player player;
 
-	public PlayerController ( String name ) {
-		super( name );
+	public PlayerController () {
+		super( Constants.PLAYER_CONTROLLER_NAME );
 
 	}
 
 
 	public void update ( Observable o, Object arg ) {
 
+	}
+
+	public void propertyChange ( PropertyChangeEvent evt ) {
+		
 	}
 }

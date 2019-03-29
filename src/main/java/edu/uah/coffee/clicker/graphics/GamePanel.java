@@ -1,7 +1,7 @@
 package edu.uah.coffee.clicker.graphics;
 
+import edu.uah.coffee.clicker.Constants;
 import edu.uah.coffee.clicker.controller.Controller;
-import javafx.beans.InvalidationListener;
 
 import javax.swing.*;
 
@@ -10,7 +10,7 @@ public class GamePanel extends CoffeeClickerPanel {
 	private Controller controller;
 
 	public GamePanel () {
-		super( "gamePanel" );
+		super( Constants.GAME_PANEL_NAME );
 		setLayout( null );
 		setSize( 1000, 1000 );
 		setLocation( 0, 200 );
@@ -25,13 +25,5 @@ public class GamePanel extends CoffeeClickerPanel {
 
 	public void setController ( Controller controller ) {
 		this.controller = controller;
-	}
-
-	public void addListener ( InvalidationListener listener ) {
-
-	}
-
-	public void removeListener ( InvalidationListener listener ) {
-
 	}
 }

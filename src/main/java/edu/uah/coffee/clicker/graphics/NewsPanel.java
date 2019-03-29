@@ -1,14 +1,14 @@
 package edu.uah.coffee.clicker.graphics;
 
-import edu.uah.coffee.clicker.controller.Controller;
+import edu.uah.coffee.clicker.Constants;
 
 import javax.swing.*;
 
-public class NewsPanel extends JPanel {
+public class NewsPanel extends CoffeeClickerPanel {
 	private JLabel label;
-	private Controller controller;
 
 	public NewsPanel () {
+		super( Constants.NEWS_PANEL_NAME );
 		setLayout( null );
 		setSize( 1000, 1000 );
 		setLocation( 0, 0 );
@@ -19,9 +19,5 @@ public class NewsPanel extends JPanel {
 		label.setText( "N E W S" );
 		label.setVisible( true );
 		this.add( label );
-	}
-
-	public void setController ( Controller controller ) {
-		this.controller = controller;
 	}
 }

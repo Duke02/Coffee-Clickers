@@ -1,13 +1,12 @@
 package edu.uah.coffee.clicker.graphics;
 
 import edu.uah.coffee.clicker.controller.Controller;
-import javafx.beans.Observable;
 
 import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class CoffeeClickerPanel extends JPanel implements Observable {
+public abstract class CoffeeClickerPanel extends JPanel {
 	protected String name;
 
 	protected Map< String, Controller > controllers;
@@ -21,12 +20,12 @@ public abstract class CoffeeClickerPanel extends JPanel implements Observable {
 		return this.controllers.get( name );
 	}
 
-	protected void addController ( Controller controller ) {
+	public void addController ( Controller controller ) {
 		this.controllers.put( controller.getName(), controller );
+		this.addPropertyChangeListener( controller.getName(), controller );
 	}
 
 	public String getName () {
 		return this.name;
 	}
-
 }

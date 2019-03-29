@@ -4,18 +4,18 @@ import edu.uah.coffee.clicker.controller.Controller;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class View implements Runnable {
-	private Controller controller;
-
 	private static final Toolkit TOOLKIT = Toolkit.getDefaultToolkit();
 	private static final int SCREEN_WIDTH = TOOLKIT.getScreenSize().width;
 	private static final int SCREEN_HEIGHT = TOOLKIT.getScreenSize().height;
 
 	private JFrame frame;
-	private ImportantPanel importantPanel;
-	private NewsPanel newsPanel;
-	private GamePanel gamePanel;
+
+
+	private Map< String, CoffeeClickerPanel > panels;
 
 	public View () {
 		//test comment. Last commit and push failed and I can't try again without making a change.
@@ -24,23 +24,27 @@ public class View implements Runnable {
 		frame.setLocation( 0, 0 );
 		frame.setLayout( null );
 		frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		frame.setTitle( "CC" );
+		frame.setTitle( "Coffee Clickers" );
 
-		importantPanel = new ImportantPanel();
-		frame.add( importantPanel );
-		newsPanel = new NewsPanel();
-		frame.add( newsPanel );
-		gamePanel = new GamePanel();
-		frame.add( gamePanel );
+		this.panels = new HashMap< String, CoffeeClickerPanel >();
+
+		this.addPanel( new ImportantPanel() );
+		this.addPanel( new NewsPanel() );
+		this.addPanel( new GamePanel() );
+
+		for ( CoffeeClickerPanel panel : this.panels.values() ) {
+			this.frame.add( panel );
+		}
 
 		frame.setVisible( true );
 	}
 
-	public void setController ( Controller controller ) {
-		this.controller = controller;
-		this.importantPanel.setController( controller );
-		this.gamePanel.setController( controller );
-		this.newsPanel.setController( controller );
+	protected void addPanel ( CoffeeClickerPanel panel ) {
+		this.panels.put( panel.getName(), panel );
+	}
+
+	public void setController ( String panelName, Controller controller ) {
+		this.panels.get( panelName ).addController( controller );
 	}
 
 	public void run () {
