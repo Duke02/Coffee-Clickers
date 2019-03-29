@@ -21,26 +21,22 @@ public class View implements Runnable {
 		//test comment. Last commit and push failed and I can't try again without making a change.
 		frame = new JFrame();
 		frame.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
-		frame.setLocation( 0, 0 );
-		frame.setLayout( null );
+		frame.setLayout( new BorderLayout() );
 		frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		frame.setTitle( "Coffee Clickers" );
 
 		this.panels = new HashMap< String, CoffeeClickerPanel >();
 
-		this.addPanel( new ImportantPanel() );
-		this.addPanel( new NewsPanel() );
-		this.addPanel( new GamePanel() );
-
-		for ( CoffeeClickerPanel panel : this.panels.values() ) {
-			this.frame.add( panel );
-		}
+		this.addPanel( new NewsPanel(), BorderLayout.NORTH );
+		this.addPanel( new GamePanel(), BorderLayout.CENTER );
 
 		frame.setVisible( true );
 	}
 
-	protected void addPanel ( CoffeeClickerPanel panel ) {
+	protected void addPanel ( CoffeeClickerPanel panel, String placement ) {
+
 		this.panels.put( panel.getName(), panel );
+		this.frame.add( panel, placement );
 	}
 
 	public void setController ( String panelName, Controller controller ) {

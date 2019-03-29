@@ -13,4 +13,6 @@ public abstract class CoffeeClickerModel extends Observable {
 	public String getModelName () {
 		return this.modelName;
 	}
+
+
 }

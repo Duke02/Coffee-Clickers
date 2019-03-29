@@ -40,6 +40,15 @@ public abstract class Controller implements Observer, PropertyChangeListener {
 	}
 
 	public void addModel ( CoffeeClickerModel model ) {
+		model.addObserver( this );
+		this.models.put( model.getModelName(), model );
+	}
+
+	public void updateModel ( CoffeeClickerModel model ) {
+		if ( ! this.models.containsKey( model.getModelName() ) ) {
+			return;
+		}
+		this.models.remove( model.getModelName() );
 		this.models.put( model.getModelName(), model );
 	}
 
