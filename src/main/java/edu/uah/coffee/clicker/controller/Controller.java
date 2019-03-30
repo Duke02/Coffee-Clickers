@@ -52,6 +52,12 @@ public abstract class Controller implements Observer, PropertyChangeListener {
 		this.models.put( model.getModelName(), model );
 	}
 
+	/**
+	 * Triggered when a model changes state.
+	 *
+	 * @param o   the model
+	 * @param arg the arguments passed.
+	 */
 	public abstract void update ( Observable o, Object arg );
 
 	public abstract void propertyChange ( PropertyChangeEvent evt );

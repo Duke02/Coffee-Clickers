@@ -12,7 +12,7 @@ public class Building extends CoffeeClickerModel implements Improvement {
 	protected String name;
 
 	public Building ( String name, int id, double cookiesPerSecond ) {
-		super( name );
+		super( "building-" + id );
 		this.name = name;
 		this.id = id;
 		this.cookiesPerSecond = cookiesPerSecond;
