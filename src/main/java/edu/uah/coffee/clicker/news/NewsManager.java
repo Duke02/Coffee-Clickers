@@ -3,6 +3,7 @@ package edu.uah.coffee.clicker.news;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import edu.uah.coffee.clicker.CoffeeClickerModel;
+import edu.uah.coffee.clicker.Constants;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,7 +19,7 @@ public class NewsManager extends CoffeeClickerModel {
 	protected Random randomEngine;
 
 	public NewsManager () {
-		super( "newsManager" );
+		super( Constants.NEWS_MANAGER_NAME );
 		this.news = new ArrayList< News >();
 		this.randomEngine = new Random();
 		this.lastIndex = - 1;
