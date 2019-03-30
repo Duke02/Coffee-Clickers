@@ -1,0 +1,17 @@
+[
+  {
+    "id": 0,
+    "name": "Coffee Brew Set",
+    "cookiesPerSecond": 0.5
+  },
+  {
+    "id": 1,
+    "name": "Coffee Stand",
+    "cookiesPerSecond": 1
+  },
+  {
+    "id": 2,
+    "name": "Coffee Shop",
+    "cookiesPerSecond": 2.5
+  }
+]
