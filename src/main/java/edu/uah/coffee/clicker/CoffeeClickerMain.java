@@ -3,6 +3,7 @@ package edu.uah.coffee.clicker;
 import edu.uah.coffee.clicker.controller.PlayerController;
 import edu.uah.coffee.clicker.graphics.View;
 import edu.uah.coffee.clicker.improvements.BuildingManager;
+import edu.uah.coffee.clicker.news.NewsManager;
 
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -14,6 +15,9 @@ public class CoffeeClickerMain {
 
 		BuildingManager buildingManager = new BuildingManager();
 		buildingManager.parseJsonFile( "json/buildings.json" );
+
+		NewsManager newsManager = new NewsManager();
+		newsManager.parseNewsDataFile( "json/news.json" );
 
 		View view = new View();
 		PlayerController playerController = new PlayerController();
