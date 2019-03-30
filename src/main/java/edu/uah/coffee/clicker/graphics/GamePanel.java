@@ -23,7 +23,7 @@ public class GamePanel extends CoffeeClickerPanel {
 
 		countButton = new JButton();
 		countButton.setLayout( null );
-		//countButton.setPreferredSize( new Dimension( 200, 100 ) );
+		countButton.setMaximumSize( new Dimension( 100, 75 ) );
 		countButton.setText( "More Coffee!" );
 		countButton.setName( "coffeeButton" );
 		countButton.setVisible( true );

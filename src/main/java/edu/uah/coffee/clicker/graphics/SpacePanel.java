@@ -10,6 +10,6 @@ public class SpacePanel extends JPanel {
 
 	public SpacePanel ( int width, int height ) {
 		super();
-		this.setSize( new Dimension( width, height ) );
+		this.setMinimumSize( new Dimension( width, height ) );
 	}
 }
