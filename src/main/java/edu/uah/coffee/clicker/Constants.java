@@ -9,4 +9,6 @@ public class Constants {
 	public static final String PLAYER_CONTROLLER_NAME = "player-controller";
 	public static final String NEWS_CONTROLLER_NAME = "news-controller";
 	public static final String NEWS_MANAGER_NAME = "news-manager";
+	public static final String BUILDING_CONTROLLER_NAME = "building-controller";
+	public static final String BUILDING_MANAGER_NAME = "building-manager";
 }

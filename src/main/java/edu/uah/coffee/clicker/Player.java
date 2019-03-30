@@ -24,4 +24,12 @@ public class Player extends CoffeeClickerModel {
 		this.notifyObservers();
 	}
 
+	public void loseBeans ( int cost ) throws IllegalArgumentException {
+		if ( this.numberOfCoffeeBeans < cost ) {
+			throw new IllegalArgumentException( "Cannot lost more beans than currently have." );
+		}
+		this.numberOfCoffeeBeans -= cost;
+		this.setChanged();
+		this.notifyObservers();
+	}
 }
