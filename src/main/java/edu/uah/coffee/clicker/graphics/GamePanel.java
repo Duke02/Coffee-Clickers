@@ -5,7 +5,6 @@ import edu.uah.coffee.clicker.controller.Controller;
 import edu.uah.coffee.clicker.controller.PlayerController;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class GamePanel extends CoffeeClickerPanel {
 	private JButton countButton;
@@ -14,26 +13,26 @@ public class GamePanel extends CoffeeClickerPanel {
 
 	public GamePanel () {
 		super( Constants.GAME_PANEL_NAME );
-		setLayout( new BorderLayout( 250, 250 ) );
+		setLayout( new BoxLayout( this, BoxLayout.Y_AXIS ) );
 		//setPreferredSize( new Dimension( 500, 500 ) );
 
-		this.add( new SpacePanel( 500, 100 ), BorderLayout.EAST );
-		this.add( new SpacePanel( 500, 100 ), BorderLayout.WEST );
-		this.add( new SpacePanel( 100, 500 ), BorderLayout.SOUTH );
-
-		countButton = new JButton();
-		countButton.setLayout( null );
-		countButton.setMaximumSize( new Dimension( 100, 75 ) );
-		countButton.setText( "More Coffee!" );
-		countButton.setName( "coffeeButton" );
-		countButton.setVisible( true );
-		this.add( countButton, BorderLayout.CENTER );
+		//this.add( new SpacePanel( 250, 100 ), BorderLayout.EAST );
+		//this.add( new SpacePanel( 250, 100 ), BorderLayout.WEST );
+		//this.add( new SpacePanel( 100, 250 ), BorderLayout.SOUTH );
 
 		currentCoffeeBeans = new JLabel();
 		currentCoffeeBeans.setText( "Coffee Beans: 0" );
-		this.add( currentCoffeeBeans, BorderLayout.NORTH );
+		this.add( currentCoffeeBeans );
 
+		this.add( Box.createVerticalStrut( 50 ) );
 
+		countButton = new JButton();
+		countButton.setLayout( null );
+		//countButton.setMaximumSize( new Dimension( 100, 75 ) );
+		countButton.setText( "More Coffee!" );
+		countButton.setName( "coffeeButton" );
+		countButton.setVisible( true );
+		this.add( countButton );
 	}
 
 	public void addController ( Controller controller ) {

@@ -14,13 +14,13 @@ public class NewsPanel extends CoffeeClickerPanel {
 		setLayout( new BorderLayout() );
 		//setSize( 1000, 1000 );
 		newsHeadingLabel = new JLabel();
-		newsHeadingLabel.setPreferredSize( new Dimension( 200, 100 ) );
+		//newsHeadingLabel.setPreferredSize( new Dimension( , 100 ) );
 		newsHeadingLabel.setText( "News Update:" );
 		newsHeadingLabel.setVisible( true );
 		this.add( newsHeadingLabel, BorderLayout.NORTH );
 
 		this.currentNewsLabel = new JLabel();
-		currentNewsLabel.setPreferredSize( new Dimension( 200, 100 ) );
+		//currentNewsLabel.setPreferredSize( new Dimension( 200, 100 ) );
 		currentNewsLabel.setText( "" );
 		currentNewsLabel.setVisible( true );
 		this.add( currentNewsLabel, BorderLayout.CENTER );
