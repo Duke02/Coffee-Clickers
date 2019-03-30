@@ -17,16 +17,16 @@ public class View implements Runnable {
 		frame = new JFrame();
 		frame.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
 		frame.setLocation( 0, 0 );
-		frame.setLayout( null );
+		frame.setLayout( new BorderLayout() );
 		frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		frame.setTitle( "Coffee Clickers" );
 
-		importantPanel = new ImportantPanel();
-		frame.add( importantPanel );
+		// importantPanel = new ImportantPanel();
+		// frame.add( importantPanel );
 		newsPanel = new NewsPanel();
-		frame.add( newsPanel );
+		frame.add( newsPanel, BorderLayout.NORTH );
 		gamePanel = new GamePanel();
-		frame.add( gamePanel );
+		frame.add( gamePanel, BorderLayout.CENTER );
 
 		frame.setVisible( true );
 	}
