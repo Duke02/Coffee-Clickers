@@ -5,7 +5,6 @@ import edu.uah.coffee.clicker.controller.Controller;
 import edu.uah.coffee.clicker.controller.PlayerController;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class GamePanel extends CoffeeClickerPanel {
 	private JButton countButton;
@@ -24,7 +23,7 @@ public class GamePanel extends CoffeeClickerPanel {
 
 		countButton = new JButton();
 		countButton.setLayout( null );
-		countButton.setPreferredSize( new Dimension( 250, 150 ) );
+//		countButton.setPreferredSize( new Dimension( 250, 150 ) );
 		countButton.setText( "More Coffee!" );
 		countButton.setName( "coffeeButton" );
 		countButton.setVisible( true );

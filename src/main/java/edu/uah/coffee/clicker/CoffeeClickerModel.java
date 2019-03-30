@@ -7,6 +7,7 @@ public abstract class CoffeeClickerModel extends Observable {
 	protected String modelName;
 
 	public CoffeeClickerModel ( String modelName ) {
+		super();
 		this.modelName = modelName;
 	}
 
@@ -14,5 +15,7 @@ public abstract class CoffeeClickerModel extends Observable {
 		return this.modelName;
 	}
 
-
+	public void setModelName ( String name ) {
+		this.modelName = name;
+	}
 }

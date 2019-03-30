@@ -28,15 +28,17 @@ public class View implements Runnable {
 		this.panels = new HashMap< String, CoffeeClickerPanel >();
 
 		this.addPanel( new NewsPanel(), BorderLayout.NORTH );
-		this.addPanel( new GamePanel(), BorderLayout.CENTER );
+		this.addPanel( new GamePanel(), BorderLayout.WEST );
+		this.addPanel( new BuildingsPanel(), BorderLayout.CENTER );
 
 		frame.setVisible( true );
 	}
 
-	protected void addPanel ( CoffeeClickerPanel panel, String placement ) {
+	private void addPanel ( CoffeeClickerPanel panel, String placement ) {
 
 		this.panels.put( panel.getName(), panel );
 		this.frame.add( panel, placement );
+		panel.setVisible( true );
 	}
 
 	public void setController ( String panelName, Controller controller ) {
@@ -44,7 +46,7 @@ public class View implements Runnable {
 	}
 
 	public void run () {
-
+		int x = 2;
 	}
 
 	public CoffeeClickerPanel getPanel ( String name ) {

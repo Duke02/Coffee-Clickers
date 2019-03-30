@@ -23,7 +23,7 @@ public class PlayerController extends Controller implements MouseListener {
 	public void update ( Observable o, Object arg ) {
 		Player player;
 
-		if ( ! ( ( Player ) o ).getModelName().equals( Constants.PLAYER_MODEL_NAME ) ) {
+		if ( ! ( o instanceof Player ) ) {
 			return;
 		}
 		player = ( Player ) o;

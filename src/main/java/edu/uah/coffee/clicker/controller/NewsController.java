@@ -9,8 +9,6 @@ import java.util.Observable;
 
 public class NewsController extends Controller implements Runnable {
 
-	protected long lastTimeNewsChanged;
-
 	public NewsController () {
 		super( Constants.NEWS_CONTROLLER_NAME );
 	}
@@ -24,10 +22,6 @@ public class NewsController extends Controller implements Runnable {
 	}
 
 	public void run () {
-		if ( System.currentTimeMillis() - lastTimeNewsChanged < 25000 ) {
-			return;
-		}
-		lastTimeNewsChanged = System.currentTimeMillis();
 		NewsManager newsManager = ( NewsManager ) this.models.get( Constants.NEWS_MANAGER_NAME );
 		NewsPanel newsPanel = ( NewsPanel ) this.views.get( Constants.NEWS_PANEL_NAME );
 		newsPanel.setNews( newsManager.getCurrentNews().getText() );

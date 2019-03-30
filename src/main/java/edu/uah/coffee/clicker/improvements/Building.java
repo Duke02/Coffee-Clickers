@@ -24,6 +24,30 @@ public class Building extends CoffeeClickerModel implements Improvement {
 		this.initialCost = cost;
 	}
 
+	/**
+	 * Default constructor for parsing json files.
+	 */
+	public Building () {
+		this( "", - 1, - 1, - 1, - 1 );
+	}
+
+	public Building ( Building building ) {
+		this( building.getName(), building.getId(), building.getCookiesPerSecond(),
+				building.initialCost, building.costCoefficient );
+	}
+
+	public void setId ( int id ) {
+		this.id = id;
+	}
+
+	public void setCostCoefficient ( int costCoefficient ) {
+		this.costCoefficient = costCoefficient;
+	}
+
+	public void setInitialCost ( int initialCost ) {
+		this.initialCost = initialCost;
+	}
+
 	public int getNumberBought () {
 		return numberBought;
 	}
@@ -69,7 +93,7 @@ public class Building extends CoffeeClickerModel implements Improvement {
 	 * @return
 	 */
 	protected int getCost ( int x ) {
-		return this.costCoefficient * x + this.initialCost;
+		return this.costCoefficient * ( x - 1 ) + this.initialCost;
 	}
 
 	/**
@@ -77,6 +101,10 @@ public class Building extends CoffeeClickerModel implements Improvement {
 	 */
 	public int getCost () {
 		return this.getCost( this.numberBought + 1 );
+	}
+
+	public int getLastCost () {
+		return this.getCost( this.numberBought );
 	}
 
 	public int getId () {
