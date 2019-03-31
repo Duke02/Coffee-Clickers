@@ -18,7 +18,6 @@ public class View implements Runnable {
 	private Map< String, CoffeeClickerPanel > panels;
 
 	public View () {
-		//test comment. Last commit and push failed and I can't try again without making a change.
 		frame = new JFrame();
 		frame.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
 		frame.setLayout( new BorderLayout() );
@@ -34,6 +33,8 @@ public class View implements Runnable {
 		frame.setVisible( true );
 	}
 
+	public void run () {
+	}
 	private void addPanel ( CoffeeClickerPanel panel, String placement ) {
 
 		this.panels.put( panel.getName(), panel );
@@ -43,10 +44,6 @@ public class View implements Runnable {
 
 	public void setController ( String panelName, Controller controller ) {
 		this.panels.get( panelName ).addController( controller );
-	}
-
-	public void run () {
-		int x = 2;
 	}
 
 	public CoffeeClickerPanel getPanel ( String name ) {
