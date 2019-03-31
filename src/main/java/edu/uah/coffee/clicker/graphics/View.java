@@ -31,7 +31,7 @@ public class View implements Runnable {
 		frame.setVisible( true );
 	}
 
-	public void run () {
+	public void run() {
 
 	}
 }
