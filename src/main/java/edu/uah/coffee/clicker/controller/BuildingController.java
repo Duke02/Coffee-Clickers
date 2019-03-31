@@ -58,7 +58,6 @@ public class BuildingController extends Controller implements ActionListener {
 	}
 
 	public void actionPerformed ( ActionEvent e ) {
-		System.out.println( "Action performed." );
 		if ( e.getActionCommand().equals( "buy" ) ) {
 			BuildingPanel panel = ( BuildingPanel ) ( ( JButton ) e.getSource() ).getParent();
 			BuildingManager buildingManager = ( ( BuildingManager ) this.getModel( Constants.BUILDING_MANAGER_NAME ) );
