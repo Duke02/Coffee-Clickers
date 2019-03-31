@@ -9,7 +9,6 @@ public class View implements Runnable {
 	private static final int SCREEN_HEIGHT = TOOLKIT.getScreenSize().height;
 
 	private JFrame frame;
-	private ImportantPanel importantPanel;
 	private NewsPanel newsPanel;
 	private GamePanel gamePanel;
 
@@ -21,8 +20,6 @@ public class View implements Runnable {
 		frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		frame.setTitle( "Coffee Clickers" );
 
-		// importantPanel = new ImportantPanel();
-		// frame.add( importantPanel );
 		newsPanel = new NewsPanel();
 		frame.add( newsPanel, BorderLayout.NORTH );
 		gamePanel = new GamePanel();
@@ -31,7 +28,7 @@ public class View implements Runnable {
 		frame.setVisible( true );
 	}
 
-	public void run() {
+	public void run () {
 
 	}
 }
