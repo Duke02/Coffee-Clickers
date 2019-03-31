@@ -1,9 +1,12 @@
 package edu.uah.coffee.clicker.graphics;
 
 import edu.uah.coffee.clicker.Constants;
+import edu.uah.coffee.clicker.controller.BuildingController;
+import edu.uah.coffee.clicker.controller.Controller;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 /**
  * Panel for displaying individual buildings.
@@ -41,6 +44,7 @@ public class BuildingPanel extends CoffeeClickerPanel {
 		buyButton.setName( "buyBuilding" );
 		buyButton.setText( "Buy!" );
 		buyButton.setVisible( true );
+		this.buyButton.setActionCommand( "buy" );
 		this.add( buyButton );
 
 		// Set up initial building id.
@@ -68,6 +72,14 @@ public class BuildingPanel extends CoffeeClickerPanel {
 		if ( this.buildingId == - 1 ) {
 			// Ignore any changes to building id.
 			this.buildingId = id;
+		}
+	}
+
+	@Override
+	public void addController ( Controller controller ) {
+		super.addController( controller );
+		if ( controller instanceof BuildingController ) {
+			this.buyButton.addActionListener( ( ActionListener ) controller );
 		}
 	}
 }

@@ -1,6 +1,7 @@
 package edu.uah.coffee.clicker.graphics;
 
 import edu.uah.coffee.clicker.Constants;
+import edu.uah.coffee.clicker.controller.Controller;
 import edu.uah.coffee.clicker.improvements.Building;
 
 import javax.swing.*;
@@ -17,31 +18,37 @@ public class BuildingsPanel extends StorePanel {
 		setLayout( new BoxLayout( this, BoxLayout.Y_AXIS ) );
 	}
 
-	public void addBuilding ( Building building ) {
-		BuildingPanel buildingPanel = new BuildingPanel();
+	public void updateBuilding ( Building building ) {
+		BuildingPanel buildingPanel;
+		boolean wasIn = this.buildingPanels.containsKey( building.getId() );
+		if ( ! wasIn ) {
+			buildingPanel = new BuildingPanel();
+		} else {
+			buildingPanel = this.buildingPanels.get( building.getId() );
+		}
 
 		buildingPanel.setBuildingId( building.getId() );
 		buildingPanel.setBuildingName( building.getName() );
 		buildingPanel.setNumberBought( building.getNumberBought() );
-		buildingPanel.setCost( building.getCost() );
+		buildingPanel.setCost( building.getCost() + building.getCostCoefficient() );
 
-		this.add( buildingPanel );
+		if ( ! wasIn ) {
+			this.add( buildingPanel );
+			buildingPanel.addController( this.getController( Constants.BUILDING_CONTROLLER_NAME ) );
+		}
+
 		this.buildingPanels.put( building.getId(), buildingPanel );
 	}
 
-	public void updateBuilding ( Building building ) {
-		if ( ! this.buildingPanels.containsKey( building.getId() ) ) {
-			this.addBuilding( building );
-			return;
+	@Override
+	public void addController ( Controller controller ) {
+		super.addController( controller );
+		this.addControllerToPanels( controller );
+	}
+
+	private void addControllerToPanels ( Controller controller ) {
+		for ( BuildingPanel buildingPanel : this.buildingPanels.values() ) {
+			buildingPanel.addController( controller );
 		}
-
-		BuildingPanel buildingPanel = this.buildingPanels.get( building.getId() );
-
-		buildingPanel.setBuildingId( building.getId() );
-		buildingPanel.setBuildingName( building.getName() );
-		buildingPanel.setNumberBought( building.getNumberBought() );
-		buildingPanel.setCost( building.getCost() );
-
-		this.buildingPanels.put( building.getId(), buildingPanel );
 	}
 }

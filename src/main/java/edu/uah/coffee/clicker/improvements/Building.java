@@ -59,14 +59,16 @@ public class Building extends CoffeeClickerModel implements Improvement {
 	 * @return the total cost of the purchase.
 	 */
 	public int buy ( int amount ) {
-		this.numberBought += amount;
 
 		int costOfPurchase = 0;
 		for ( int i = 0; i < amount; i++ ) {
 			costOfPurchase += this.getCost( this.numberBought + i );
 		}
 
+		this.numberBought += amount;
+
 		this.setChanged();
+		this.notifyObservers();
 		return costOfPurchase;
 	}
 
@@ -100,10 +102,6 @@ public class Building extends CoffeeClickerModel implements Improvement {
 	 * @return the cost of buying another of this building.
 	 */
 	public int getCost () {
-		return this.getCost( this.numberBought + 1 );
-	}
-
-	public int getLastCost () {
 		return this.getCost( this.numberBought );
 	}
 
@@ -137,5 +135,9 @@ public class Building extends CoffeeClickerModel implements Improvement {
 	public void setName ( String name ) {
 		this.name = name;
 		this.setChanged();
+	}
+
+	public int getCostCoefficient () {
+		return this.costCoefficient;
 	}
 }
