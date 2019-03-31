@@ -15,6 +15,7 @@ public class BuildingPanel extends CoffeeClickerPanel {
 	private JLabel numberBought;
 	private JLabel buildingName;
 	private JLabel cost;
+	private JLabel beansPerSecond;
 	private JLabel buildingImage;
 	private JButton buyButton;
 	private int buildingId;
@@ -35,9 +36,13 @@ public class BuildingPanel extends CoffeeClickerPanel {
 
 		numberBought = new JLabel();
 		numberBought.setText( "Owned: 0" );
-//		numberBought.setHorizontalAlignment( JLabel.RIGHT );
 		numberBought.setVisible( true );
 		this.add( numberBought );
+
+		beansPerSecond = new JLabel();
+		beansPerSecond.setText( "Beans/sec: 0" );
+		beansPerSecond.setVisible( true );
+		this.add( beansPerSecond );
 
 		cost = new JLabel();
 		cost.setText( "Cost: 0" );
@@ -81,6 +86,10 @@ public class BuildingPanel extends CoffeeClickerPanel {
 
 	public void setBuildingImage ( String filename ) {
 		this.buildingImage.setIcon( new ImageIcon( filename ) );
+	}
+
+	public void setBPS ( int bps ) {
+		this.beansPerSecond.setText( String.format( "Beans/sec: %d", bps ) );
 	}
 
 	@Override

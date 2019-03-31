@@ -12,10 +12,13 @@ public class BuildingsPanel extends CoffeeClickerPanel {
 
 	Map< Integer, BuildingPanel > buildingPanels;
 
+
 	public BuildingsPanel () {
 		super( Constants.BUILDING_PANEL_NAME );
+
 		this.buildingPanels = new HashMap< Integer, BuildingPanel >();
 		setLayout( new BoxLayout( this, BoxLayout.Y_AXIS ) );
+
 	}
 
 	public void updateBuilding ( Building building ) {
@@ -32,6 +35,7 @@ public class BuildingsPanel extends CoffeeClickerPanel {
 		buildingPanel.setNumberBought( building.getNumberBought() );
 		buildingPanel.setCost( building.getCost() + building.getCostCoefficient() );
 		buildingPanel.setBuildingImage( building.getImageFileName() );
+		buildingPanel.setBPS( ( int ) building.getBeansPerSecond() );
 
 		if ( ! wasIn ) {
 			this.add( buildingPanel );

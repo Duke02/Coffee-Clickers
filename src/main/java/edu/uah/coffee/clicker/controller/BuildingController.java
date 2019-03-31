@@ -2,6 +2,7 @@ package edu.uah.coffee.clicker.controller;
 
 import edu.uah.coffee.clicker.CoffeeClickerModel;
 import edu.uah.coffee.clicker.Constants;
+import edu.uah.coffee.clicker.Player;
 import edu.uah.coffee.clicker.graphics.BuildingPanel;
 import edu.uah.coffee.clicker.graphics.BuildingsPanel;
 import edu.uah.coffee.clicker.improvements.Building;
@@ -17,7 +18,9 @@ import java.util.Observable;
  * The controller for handling communication between all of the BuildingPanels
  * and BuildingManager.
  */
-public class BuildingController extends Controller implements ActionListener {
+public class BuildingController extends Controller implements ActionListener, Runnable {
+	private Player Player;
+
 	public BuildingController () {
 		super( Constants.BUILDING_CONTROLLER_NAME );
 	}
@@ -63,5 +66,11 @@ public class BuildingController extends Controller implements ActionListener {
 			BuildingManager buildingManager = ( ( BuildingManager ) this.getModel( Constants.BUILDING_MANAGER_NAME ) );
 			buildingManager.buyBuilding( panel.getBuildingId(), 1 );
 		}
+	}
+
+	public void run () {
+		BuildingManager buildingManager = ( BuildingManager ) this.getModel( Constants.BUILDING_MANAGER_NAME );
+		Player player = ( Player ) this.getModel( Constants.PLAYER_MODEL_NAME );
+		player.addCoffeeBeans( buildingManager.getBeansPerSecond() );
 	}
 }

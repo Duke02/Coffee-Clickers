@@ -82,4 +82,12 @@ public class BuildingManager extends AbstractManager {
 	public List< Building > getBuildings () {
 		return new ArrayList< Building >( this.buildings.values() );
 	}
+
+	public int getBeansPerSecond () {
+		int out = 0;
+		for ( Building building : this.getBuildings() ) {
+			out += building.getNumberBought() * building.getBeansPerSecond();
+		}
+		return out;
+	}
 }

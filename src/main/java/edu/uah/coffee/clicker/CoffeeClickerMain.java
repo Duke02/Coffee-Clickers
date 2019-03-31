@@ -31,6 +31,7 @@ public class CoffeeClickerMain {
 		// Set up the player controller
 		PlayerController playerController = new PlayerController();
 		playerController.addModel( player );
+		playerController.addModel( buildingManager );
 		playerController.addView( view.getPanel( Constants.GAME_PANEL_NAME ) );
 
 		// Set up the news controller
@@ -42,6 +43,7 @@ public class CoffeeClickerMain {
 		BuildingController buildingController = new BuildingController();
 		buildingController.addView( view.getPanel( Constants.BUILDING_PANEL_NAME ) );
 		buildingController.addModel( buildingManager );
+		buildingController.addModel( player );
 		numOfCores++;
 
 
@@ -50,5 +52,6 @@ public class CoffeeClickerMain {
 		// There are 0.06 frames per millisecond.
 		executor.scheduleAtFixedRate( view, 0L, ( long ) ( 1.0 / 0.06 ), TimeUnit.MICROSECONDS );
 		executor.scheduleAtFixedRate( newsController, 0L, 60, TimeUnit.SECONDS );
+		executor.scheduleAtFixedRate( buildingController, 0L, 1, TimeUnit.SECONDS );
 	}
 }

@@ -3,6 +3,7 @@ package edu.uah.coffee.clicker.controller;
 import edu.uah.coffee.clicker.Constants;
 import edu.uah.coffee.clicker.Player;
 import edu.uah.coffee.clicker.graphics.GamePanel;
+import edu.uah.coffee.clicker.improvements.BuildingManager;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -21,17 +22,20 @@ public class PlayerController extends Controller implements MouseListener {
 
 
 	public void update ( Observable o, Object arg ) {
-		Player player;
 
-		if ( ! ( o instanceof Player ) ) {
-			return;
+
+		if ( o instanceof Player ) {
+			Player player = ( Player ) o;
+
+			this.updateModel( player );
+
+			GamePanel gamePanel = ( GamePanel ) this.getView( Constants.GAME_PANEL_NAME );
+			gamePanel.setCurrentNumberOfCoffeeBeans( player.getCoffeeBeans() );
+		} else if ( o instanceof BuildingManager ) {
+			BuildingManager buildingManager = ( BuildingManager ) o;
+			GamePanel gamePanel = ( GamePanel ) this.getView( Constants.GAME_PANEL_NAME );
+			gamePanel.setBeansPerSecond( buildingManager.getBeansPerSecond() );
 		}
-		player = ( Player ) o;
-
-		this.updateModel( player );
-
-		GamePanel gamePanel = ( GamePanel ) this.getView( Constants.GAME_PANEL_NAME );
-		gamePanel.setCurrentNumberOfCoffeeBeans( player.getCoffeeBeans() );
 	}
 
 	public void propertyChange ( PropertyChangeEvent evt ) {

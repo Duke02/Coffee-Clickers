@@ -10,6 +10,7 @@ public class GamePanel extends CoffeeClickerPanel {
 	private JButton countButton;
 
 	private JLabel currentCoffeeBeans;
+	private JLabel beansPerSecond;
 
 	public GamePanel () {
 		super( Constants.GAME_PANEL_NAME );
@@ -18,6 +19,10 @@ public class GamePanel extends CoffeeClickerPanel {
 		currentCoffeeBeans = new JLabel();
 		currentCoffeeBeans.setText( "Coffee Beans: 0" );
 		this.add( currentCoffeeBeans );
+
+		beansPerSecond = new JLabel();
+		beansPerSecond.setText( "Beans/sec: 0" );
+		this.add( beansPerSecond );
 
 		this.add( Box.createVerticalStrut( 50 ) );
 
@@ -40,5 +45,9 @@ public class GamePanel extends CoffeeClickerPanel {
 
 	public void setCurrentNumberOfCoffeeBeans ( int numberOfCoffeeBeans ) {
 		this.currentCoffeeBeans.setText( String.format( "Coffee Beans: %d", numberOfCoffeeBeans ) );
+	}
+
+	public void setBeansPerSecond ( int beansPerSecond ) {
+		this.beansPerSecond.setText( String.format( "Beans/second: %d", beansPerSecond ) );
 	}
 }

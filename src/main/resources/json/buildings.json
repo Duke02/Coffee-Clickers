@@ -2,7 +2,7 @@
   {
     "id": 0,
     "name": "Coffee Brew Set",
-    "cookiesPerSecond": 0.5,
+    "cookiesPerSecond": 1,
     "initialCost": 10,
     "costCoefficient": 5,
     "imageFileName": "images/building-0.jpg"
@@ -10,7 +10,7 @@
   {
     "id": 1,
     "name": "Coffee Stand",
-    "cookiesPerSecond": 1,
+    "cookiesPerSecond": 2,
     "initialCost": 25,
     "costCoefficient": 7,
     "imageFileName": "images/building-1.jpg"
@@ -18,7 +18,7 @@
   {
     "id": 2,
     "name": "Coffee Shop",
-    "cookiesPerSecond": 3,
+    "cookiesPerSecond": 5,
     "initialCost": 50,
     "costCoefficient": 12,
     "imageFileName": "images/building-2.jpg"
@@ -26,7 +26,7 @@
   {
     "id": 3,
     "name": "MoonBills",
-    "cookiesPerSecond": 9,
+    "cookiesPerSecond": 11,
     "initialCost": 100,
     "costCoefficient": 15,
     "imageFileName": "images/building-3.png"

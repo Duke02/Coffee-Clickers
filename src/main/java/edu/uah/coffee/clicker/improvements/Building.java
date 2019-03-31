@@ -34,7 +34,7 @@ public class Building extends CoffeeClickerModel implements Improvement {
 	}
 
 	public Building ( Building building ) {
-		this( building.getName(), building.getId(), building.getCookiesPerSecond(),
+		this( building.getName(), building.getId(), building.getBeansPerSecond(),
 				building.initialCost, building.costCoefficient, building.getImageFileName() );
 	}
 
@@ -68,7 +68,7 @@ public class Building extends CoffeeClickerModel implements Improvement {
 
 		int costOfPurchase = 0;
 		for ( int i = 0; i < amount; i++ ) {
-			costOfPurchase += this.getCost( this.numberBought + i );
+			costOfPurchase += this.getCost( this.numberBought + i + 1 );
 		}
 
 		this.numberBought += amount;
@@ -115,7 +115,7 @@ public class Building extends CoffeeClickerModel implements Improvement {
 		return id;
 	}
 
-	public double getCookiesPerSecond () {
+	public double getBeansPerSecond () {
 		return cookiesPerSecond;
 	}
 

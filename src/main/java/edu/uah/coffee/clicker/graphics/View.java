@@ -1,5 +1,6 @@
 package edu.uah.coffee.clicker.graphics;
 
+import edu.uah.coffee.clicker.Constants;
 import edu.uah.coffee.clicker.controller.Controller;
 
 import javax.swing.*;
@@ -13,7 +14,7 @@ public class View implements Runnable {
 	private static final int SCREEN_HEIGHT = ( int ) ( ( double ) TOOLKIT.getScreenSize().height * 0.9 );
 
 	private JFrame frame;
-
+	private JScrollPane buildingScrollPane;
 
 	private Map< String, CoffeeClickerPanel > panels;
 
@@ -30,6 +31,10 @@ public class View implements Runnable {
 		this.addPanel( new GamePanel(), BorderLayout.WEST );
 		this.addPanel( new BuildingsPanel(), BorderLayout.CENTER );
 
+		this.buildingScrollPane = new JScrollPane( this.getPanel( Constants.BUILDING_PANEL_NAME ), JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
+		this.buildingScrollPane.setBorder( null );
+		this.frame.add( this.buildingScrollPane );
+
 		frame.setVisible( true );
 	}
 
@@ -39,7 +44,9 @@ public class View implements Runnable {
 	private void addPanel ( CoffeeClickerPanel panel, String placement ) {
 
 		this.panels.put( panel.getName(), panel );
-		this.frame.add( panel, placement );
+		if ( ! ( panel instanceof BuildingsPanel ) ) {
+			this.frame.add( panel, placement );
+		}
 		panel.setVisible( true );
 	}
 
