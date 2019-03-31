@@ -20,7 +20,6 @@ public class NewsPanel extends CoffeeClickerPanel {
 		this.add( newsHeadingLabel, BorderLayout.NORTH );
 
 		this.currentNewsLabel = new JLabel();
-		//currentNewsLabel.setPreferredSize( new Dimension( 200, 100 ) );
 		currentNewsLabel.setText( "" );
 		currentNewsLabel.setVisible( true );
 		this.add( currentNewsLabel, BorderLayout.CENTER );

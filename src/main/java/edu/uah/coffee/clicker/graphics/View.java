@@ -9,8 +9,8 @@ import java.util.Map;
 
 public class View implements Runnable {
 	private static final Toolkit TOOLKIT = Toolkit.getDefaultToolkit();
-	private static final int SCREEN_WIDTH = TOOLKIT.getScreenSize().width;
-	private static final int SCREEN_HEIGHT = TOOLKIT.getScreenSize().height;
+	private static final int SCREEN_WIDTH = ( int ) ( ( double ) TOOLKIT.getScreenSize().width * 0.9 );
+	private static final int SCREEN_HEIGHT = ( int ) ( ( double ) TOOLKIT.getScreenSize().height * 0.9 );
 
 	private JFrame frame;
 
@@ -35,6 +35,7 @@ public class View implements Runnable {
 
 	public void run () {
 	}
+
 	private void addPanel ( CoffeeClickerPanel panel, String placement ) {
 
 		this.panels.put( panel.getName(), panel );
