@@ -13,8 +13,9 @@ public class Building extends CoffeeClickerModel implements Improvement {
 	private int numberBought;
 	private int costCoefficient;
 	private int initialCost;
+	private String imageFileName;
 
-	public Building ( String name, int id, double cookiesPerSecond, int cost, int costCoefficient ) {
+	public Building ( String name, int id, double cookiesPerSecond, int cost, int costCoefficient, String filename ) {
 		super( "building-" + id );
 		this.name = name;
 		this.id = id;
@@ -22,18 +23,23 @@ public class Building extends CoffeeClickerModel implements Improvement {
 		this.numberBought = 0;
 		this.costCoefficient = costCoefficient;
 		this.initialCost = cost;
+		this.imageFileName = filename;
 	}
 
 	/**
 	 * Default constructor for parsing json files.
 	 */
 	public Building () {
-		this( "", - 1, - 1, - 1, - 1 );
+		this( "", - 1, - 1, - 1, - 1, "" );
 	}
 
 	public Building ( Building building ) {
 		this( building.getName(), building.getId(), building.getCookiesPerSecond(),
-				building.initialCost, building.costCoefficient );
+				building.initialCost, building.costCoefficient, building.getImageFileName() );
+	}
+
+	public String getImageFileName () {
+		return this.imageFileName;
 	}
 
 	public void setId ( int id ) {
@@ -139,5 +145,9 @@ public class Building extends CoffeeClickerModel implements Improvement {
 
 	public int getCostCoefficient () {
 		return this.costCoefficient;
+	}
+
+	public void setImageFileName ( String filename ) {
+		this.imageFileName = filename;
 	}
 }

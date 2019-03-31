@@ -15,15 +15,19 @@ public class BuildingPanel extends CoffeeClickerPanel {
 	private JLabel numberBought;
 	private JLabel buildingName;
 	private JLabel cost;
+	private JLabel buildingImage;
 	private JButton buyButton;
 	private int buildingId;
 
 	public BuildingPanel () {
 		super( Constants.BUILDING_PANEL_NAME );
 
-		setLayout( new GridLayout( 2, 2 ) );
+		setLayout( new GridLayout( 0, 2 ) );
 		setMaximumSize( new Dimension( 300, 100 ) );
 
+		buildingImage = new JLabel();
+		buildingImage.setVisible( true );
+		this.add( buildingImage );
 
 		buildingName = new JLabel();
 		buildingName.setVisible( true );
@@ -73,6 +77,10 @@ public class BuildingPanel extends CoffeeClickerPanel {
 			// Ignore any changes to building id.
 			this.buildingId = id;
 		}
+	}
+
+	public void setBuildingImage ( String filename ) {
+		this.buildingImage.setIcon( new ImageIcon( filename ) );
 	}
 
 	@Override

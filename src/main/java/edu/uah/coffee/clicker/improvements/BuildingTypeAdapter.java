@@ -32,6 +32,8 @@ public class BuildingTypeAdapter extends TypeAdapter {
 				building.setId( in.nextInt() );
 			} else if ( "initialCost".equals( s ) ) {
 				building.setInitialCost( in.nextInt() );
+			} else if ( "imageFileName".equals( s ) ) {
+				building.setImageFileName( in.nextString() );
 			}
 		}
 		in.endObject();

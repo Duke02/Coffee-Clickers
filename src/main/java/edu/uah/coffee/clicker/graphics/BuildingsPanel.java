@@ -31,6 +31,7 @@ public class BuildingsPanel extends StorePanel {
 		buildingPanel.setBuildingName( building.getName() );
 		buildingPanel.setNumberBought( building.getNumberBought() );
 		buildingPanel.setCost( building.getCost() + building.getCostCoefficient() );
+		buildingPanel.setBuildingImage( building.getImageFileName() );
 
 		if ( ! wasIn ) {
 			this.add( buildingPanel );
