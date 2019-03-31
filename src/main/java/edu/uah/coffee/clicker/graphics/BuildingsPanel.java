@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BuildingsPanel extends StorePanel {
+public class BuildingsPanel extends CoffeeClickerPanel {
 
 	Map< Integer, BuildingPanel > buildingPanels;
 
