@@ -4,7 +4,6 @@ import edu.uah.coffee.clicker.Constants;
 import edu.uah.coffee.clicker.improvements.Building;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +15,6 @@ public class BuildingsPanel extends StorePanel {
 		super( Constants.BUILDING_PANEL_NAME );
 		this.buildingPanels = new HashMap< Integer, BuildingPanel >();
 		setLayout( new BoxLayout( this, BoxLayout.Y_AXIS ) );
-		this.setBackground( Color.BLACK );
 	}
 
 	public void addBuilding ( Building building ) {
