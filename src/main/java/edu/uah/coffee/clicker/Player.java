@@ -1,10 +1,35 @@
 package edu.uah.coffee.clicker;
-import java.util.Scanner;
 
-public class Player {
-        Scanner CoffeeShop = new Scanner(System.in);
-        Scanner PlayerName = new Scanner(System.in);
+public class Player extends CoffeeClickerModel {
 
-        double CoffeePerSec = 0;
 
+	int numberOfCoffeeBeans;
+
+	public Player () {
+		super( Constants.PLAYER_MODEL_NAME );
+	}
+
+	public int getCoffeeBeans () {
+		return numberOfCoffeeBeans;
+	}
+
+	public void setCoffeeBeans ( int numberOfCoffeeBeans ) {
+		this.numberOfCoffeeBeans = numberOfCoffeeBeans;
+		this.setChanged();
+	}
+
+	public void addCoffeeBeans ( int i ) {
+		this.numberOfCoffeeBeans += i;
+		this.setChanged();
+		this.notifyObservers();
+	}
+
+	public void loseBeans ( int cost ) throws IllegalArgumentException {
+		if ( this.numberOfCoffeeBeans < cost ) {
+			throw new IllegalArgumentException( "Cannot lost more beans than currently have." );
+		}
+		this.numberOfCoffeeBeans -= cost;
+		this.setChanged();
+		this.notifyObservers();
+	}
 }

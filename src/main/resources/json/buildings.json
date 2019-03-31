@@ -1,0 +1,23 @@
+[
+  {
+    "id": 0,
+    "name": "Coffee Brew Set",
+    "cookiesPerSecond": 0.5,
+    "initialCost": 10,
+    "costCoefficient": 5
+  },
+  {
+    "id": 1,
+    "name": "Coffee Stand",
+    "cookiesPerSecond": 1,
+    "initialCost": 25,
+    "costCoefficient": 7
+  },
+  {
+    "id": 2,
+    "name": "Coffee Shop",
+    "cookiesPerSecond": 2.5,
+    "initialCost": 50,
+    "costCoefficient": 12
+  }
+]
