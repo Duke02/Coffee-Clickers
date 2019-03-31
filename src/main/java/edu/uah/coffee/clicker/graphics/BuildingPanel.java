@@ -23,7 +23,7 @@ public class BuildingPanel extends CoffeeClickerPanel {
 		super( Constants.BUILDING_PANEL_NAME );
 
 		setLayout( new GridLayout( 0, 2 ) );
-		setMaximumSize( new Dimension( 300, 100 ) );
+		setMaximumSize( new Dimension( 300, 200 ) );
 
 		buildingImage = new JLabel();
 		buildingImage.setVisible( true );
