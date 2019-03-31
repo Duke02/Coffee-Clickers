@@ -5,25 +5,28 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 public class View implements Runnable {
-	private static final Toolkit TOOLKIT=Toolkit.getDefaultToolkit();
-	private static final int SCREEN_WIDTH=TOOLKIT.getScreenSize().width;
-	private static final int SCREEN_HEIGHT=TOOLKIT.getScreenSize().height;
-	
+	private static final Toolkit TOOLKIT = Toolkit.getDefaultToolkit();
+	private static final int SCREEN_WIDTH = TOOLKIT.getScreenSize().width;
+	private static final int SCREEN_HEIGHT = (int) (TOOLKIT.getScreenSize().height * 0.9);
+	// note: * 0.9 is a temporary fix to prevent the window from leaning overthe
+	// taskbar
+
+	private double time = 0;// the clock is useful for animation
+
 	private JFrame frame;
 	private ImportantPanel importantPanel;
 	private NewsPanel newsPanel;
 	private GamePanel gamePanel;
 
 	public View() {
-		//test comment. Last commit and push failed and I can't try again without making a change.
 		frame = new JFrame();
-		frame.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
+		frame.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 		frame.setLocation(0, 0);
 		frame.setLayout(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("CC");
+		frame.setTitle("CC");// for coffee clickers
 
-		importantPanel=new ImportantPanel();
+		importantPanel = new ImportantPanel();
 		frame.add(importantPanel);
 		newsPanel = new NewsPanel();
 		frame.add(newsPanel);
@@ -33,7 +36,8 @@ public class View implements Runnable {
 		frame.setVisible(true);
 	}
 
-	public void run() {
-
-	}
-}
+	public void run() {// runnable!
+		time += ((double) 1 / 60);// increment time by 1/60 every 1/60 of a second
+		gamePanel.update(time);// update!
+	}// bracket!
+}// bracket?
