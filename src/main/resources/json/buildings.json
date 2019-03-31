@@ -5,7 +5,7 @@
     "cookiesPerSecond": 1,
     "initialCost": 10,
     "costCoefficient": 5,
-    "imageFileName": "images/building-0.jpg"
+    "imageFileName": "images/building-0.png"
   },
   {
     "id": 1,
@@ -30,5 +30,21 @@
     "initialCost": 100,
     "costCoefficient": 15,
     "imageFileName": "images/building-3.png"
+  },
+  {
+    "id": 4,
+    "name": "Piercin' Pastries",
+    "cookiesPerSecond": 12,
+    "initialCost": 125,
+    "costCoefficient": 15,
+    "imageFileName": "images/building-4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Bean Tree",
+    "cookiesPerSecond": 16,
+    "initialCost": 180,
+    "costCoefficient": 20,
+    "imageFileName": "images/building-5.jpg"
   }
 ]
