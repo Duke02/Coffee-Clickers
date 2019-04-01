@@ -29,3 +29,4 @@ public class NewsPanel extends AbstractPanel {
 		body.setText(newText);
 	}
 }
+//test
