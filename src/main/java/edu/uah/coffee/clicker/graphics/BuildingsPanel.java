@@ -16,7 +16,7 @@ public class BuildingsPanel extends CoffeeClickerPanel {
 	public BuildingsPanel () {
 		super( Constants.BUILDING_PANEL_NAME );
 
-		this.buildingPanels = new HashMap< Integer, BuildingPanel >();
+		this.buildingPanels = new HashMap<>();
 		setLayout( new BoxLayout( this, BoxLayout.Y_AXIS ) );
 
 	}

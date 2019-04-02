@@ -4,9 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import edu.uah.coffee.clicker.CoffeeClickerModel;
 import edu.uah.coffee.clicker.Constants;
+import edu.uah.coffee.clicker.ResourceManager;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class NewsManager extends CoffeeClickerModel {
 
 	public NewsManager () {
 		super( Constants.NEWS_MANAGER_NAME );
-		this.news = new ArrayList< News >();
+		this.news = new ArrayList<>();
 		this.randomEngine = new Random();
 		this.lastIndex = - 1;
 	}
@@ -40,15 +40,10 @@ public class NewsManager extends CoffeeClickerModel {
 	}
 
 	public void parseNewsDataFile ( String filename ) {
-		try {
-			FileReader file = new FileReader( filename );
-			Type buildingListType = new TypeToken< List< News > >() {
-			}.getType();
-			Gson gson = new Gson();
-			this.news = gson.fromJson( file, buildingListType );
-		} catch ( FileNotFoundException e ) {
-			System.err.println( "Cannot find News JSON file with filename " + filename + "!" );
-			e.printStackTrace();
-		}
+		Reader file = ResourceManager.getReader( filename );
+		Type buildingListType = new TypeToken< List< News > >() {
+		}.getType();
+		Gson gson = new Gson();
+		this.news = gson.fromJson( file, buildingListType );
 	}
 }

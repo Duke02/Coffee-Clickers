@@ -25,7 +25,7 @@ public class View implements Runnable {
 		frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		frame.setTitle( "Coffee Clickers" );
 
-		this.panels = new HashMap< String, CoffeeClickerPanel >();
+		this.panels = new HashMap<>();
 
 		this.addPanel( new NewsPanel(), BorderLayout.NORTH );
 		this.addPanel( new GamePanel(), BorderLayout.WEST );

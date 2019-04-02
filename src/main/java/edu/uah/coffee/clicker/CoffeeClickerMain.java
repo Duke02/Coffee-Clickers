@@ -18,12 +18,12 @@ public class CoffeeClickerMain {
 
 		// Set up the building manager
 		BuildingManager buildingManager = new BuildingManager();
-		buildingManager.parseJsonFile( "json/buildings.json" );
+		buildingManager.parseJsonFile( "/json/buildings.json" );
 		buildingManager.setPlayer( player );
 
 		// Set up the news manager
 		NewsManager newsManager = new NewsManager();
-		newsManager.parseNewsDataFile( "json/news.json" );
+		newsManager.parseNewsDataFile( "/json/news.json" );
 
 		View view = new View();
 		numOfCores++;

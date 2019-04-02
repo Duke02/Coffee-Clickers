@@ -6,9 +6,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import edu.uah.coffee.clicker.Constants;
 import edu.uah.coffee.clicker.Player;
+import edu.uah.coffee.clicker.ResourceManager;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.*;
 
@@ -31,23 +31,18 @@ public class BuildingManager extends AbstractManager {
 	}
 
 	public void parseJsonFile ( String filename ) {
-		try {
-			FileReader file = new FileReader( filename );
-			Type buildingListType = new TypeToken< List< Building > >() {
-			}.getType();
-			GsonBuilder gsonBuilder = new GsonBuilder();
-			gsonBuilder.registerTypeAdapter( BuildingManager.class, new BuildingTypeAdapter() );
-			Gson gson = gsonBuilder.create();
+		Reader file = ResourceManager.getReader( filename );
+		Type buildingListType = new TypeToken< List< Building > >() {
+		}.getType();
+		GsonBuilder gsonBuilder = new GsonBuilder();
+		gsonBuilder.registerTypeAdapter( BuildingManager.class, new BuildingTypeAdapter() );
+		Gson gson = gsonBuilder.create();
 
-			List< Building > temporaryBuildings = gson.fromJson( file, buildingListType );
-			for ( Building building : temporaryBuildings ) {
-				addBuilding( building );
-			}
-
-		} catch ( FileNotFoundException e ) {
-			System.err.println( "Cannot find Building JSON file with filename " + filename + "!" );
-			e.printStackTrace();
+		List< Building > temporaryBuildings = gson.fromJson( file, buildingListType );
+		for ( Building building : temporaryBuildings ) {
+			addBuilding( building );
 		}
+
 	}
 
 	public void buyBuilding ( int buildingId, int amount ) {
