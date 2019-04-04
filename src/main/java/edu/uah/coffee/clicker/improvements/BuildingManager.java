@@ -19,7 +19,7 @@ public class BuildingManager extends AbstractManager {
 	public BuildingManager () {
 		super( Constants.BUILDING_MANAGER_NAME );
 
-		this.buildings = new HashMap< Integer, Building >();
+		this.buildings = new HashMap<>();
 	}
 
 	public void setPlayer ( Player player ) {

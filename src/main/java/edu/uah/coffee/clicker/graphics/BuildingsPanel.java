@@ -16,6 +16,9 @@ public class BuildingsPanel extends CoffeeClickerPanel {
 	public BuildingsPanel () {
 		super( Constants.BUILDING_PANEL_NAME );
 
+		setRelativeLocation( 0.6, 0 );
+		setRelativeSize( 0.2, 1 );
+
 		this.buildingPanels = new HashMap<>();
 		setLayout( new BoxLayout( this, BoxLayout.Y_AXIS ) );
 

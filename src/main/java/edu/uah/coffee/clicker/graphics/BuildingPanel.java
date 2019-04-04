@@ -12,12 +12,12 @@ import java.awt.event.ActionListener;
  * Panel for displaying individual buildings.
  */
 public class BuildingPanel extends CoffeeClickerPanel {
-	private JLabel numberBought;
-	private JLabel buildingName;
-	private JLabel cost;
-	private JLabel beansPerSecond;
-	private JLabel buildingImage;
-	private JButton buyButton;
+	private CoffeeClickerLabel numberBought;
+	private CoffeeClickerLabel buildingName;
+	private CoffeeClickerLabel cost;
+	private CoffeeClickerLabel beansPerSecond;
+	private CoffeeClickerLabel buildingImage;
+	private CoffeeClickerButton buyButton;
 	private int buildingId;
 
 	public BuildingPanel () {
@@ -26,30 +26,30 @@ public class BuildingPanel extends CoffeeClickerPanel {
 		setLayout( new GridLayout( 0, 2 ) );
 		setMaximumSize( new Dimension( 300, 200 ) );
 
-		buildingImage = new JLabel();
+		buildingImage = new CoffeeClickerLabel();
 		buildingImage.setVisible( true );
 		this.add( buildingImage );
 
-		buildingName = new JLabel();
+		buildingName = new CoffeeClickerLabel();
 		buildingName.setVisible( true );
 		this.add( buildingName );
 
-		numberBought = new JLabel();
+		numberBought = new CoffeeClickerLabel();
 		numberBought.setText( "Owned: 0" );
 		numberBought.setVisible( true );
 		this.add( numberBought );
 
-		beansPerSecond = new JLabel();
+		beansPerSecond = new CoffeeClickerLabel();
 		beansPerSecond.setText( "Beans/sec: 0" );
 		beansPerSecond.setVisible( true );
 		this.add( beansPerSecond );
 
-		cost = new JLabel();
+		cost = new CoffeeClickerLabel();
 		cost.setText( "Cost: 0" );
 		cost.setVisible( true );
 		this.add( cost );
 
-		buyButton = new JButton();
+		buyButton = new CoffeeClickerButton();
 		buyButton.setName( "buyBuilding" );
 		buyButton.setText( "Buy!" );
 		buyButton.setVisible( true );

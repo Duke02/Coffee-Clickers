@@ -10,8 +10,8 @@ import java.util.Map;
 
 public class View implements Runnable {
 	private static final Toolkit TOOLKIT = Toolkit.getDefaultToolkit();
-	private static final int SCREEN_WIDTH = ( int ) ( ( double ) TOOLKIT.getScreenSize().width * 0.9 );
-	private static final int SCREEN_HEIGHT = ( int ) ( ( double ) TOOLKIT.getScreenSize().height * 0.9 );
+	public static final int SCREEN_WIDTH = ( int ) ( ( double ) TOOLKIT.getScreenSize().width * 0.9 );
+	public static final int SCREEN_HEIGHT = ( int ) ( ( double ) TOOLKIT.getScreenSize().height * 0.9 );
 
 	private JFrame frame;
 	private JScrollPane buildingScrollPane;
@@ -21,17 +21,17 @@ public class View implements Runnable {
 	public View () {
 		frame = new JFrame();
 		frame.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
-		frame.setLayout( new BorderLayout() );
+		frame.setLayout( null );
 		frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		frame.setTitle( "Coffee Clickers" );
 
 		this.panels = new HashMap<>();
 
-		this.addPanel( new NewsPanel(), BorderLayout.NORTH );
-		this.addPanel( new GamePanel(), BorderLayout.WEST );
-		this.addPanel( new BuildingsPanel(), BorderLayout.CENTER );
+		this.addPanel( new NewsPanel() );
+		this.addPanel( new GamePanel() );
+		this.addPanel( new BuildingsPanel() );
 
-		this.buildingScrollPane = new JScrollPane( this.getPanel( Constants.BUILDING_PANEL_NAME ), JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
+		this.buildingScrollPane = new CoffeeClickerScrollPane( this.getPanel( Constants.BUILDING_PANEL_NAME ), JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
 		this.buildingScrollPane.setBorder( null );
 		this.frame.add( this.buildingScrollPane );
 
@@ -41,11 +41,11 @@ public class View implements Runnable {
 	public void run () {
 	}
 
-	private void addPanel ( CoffeeClickerPanel panel, String placement ) {
+	private void addPanel ( CoffeeClickerPanel panel ) {
 
 		this.panels.put( panel.getName(), panel );
 		if ( ! ( panel instanceof BuildingsPanel ) ) {
-			this.frame.add( panel, placement );
+			this.frame.add( panel );
 		}
 		panel.setVisible( true );
 	}

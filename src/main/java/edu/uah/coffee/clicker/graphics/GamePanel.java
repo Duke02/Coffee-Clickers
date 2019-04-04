@@ -7,27 +7,30 @@ import edu.uah.coffee.clicker.controller.PlayerController;
 import javax.swing.*;
 
 public class GamePanel extends CoffeeClickerPanel {
-	private JButton countButton;
+	private CoffeeClickerButton countButton;
 
-	private JLabel currentCoffeeBeans;
-	private JLabel beansPerSecond;
+	private CoffeeClickerLabel currentCoffeeBeans;
+	private CoffeeClickerLabel beansPerSecond;
 
 	public GamePanel () {
 		super( Constants.GAME_PANEL_NAME );
+		setRelativeLocation( 0, 0.1 );
+		setRelativeSize( 0.6, 0.9 );
+
 		setLayout( new BoxLayout( this, BoxLayout.Y_AXIS ) );
 
-		currentCoffeeBeans = new JLabel();
+		currentCoffeeBeans = new CoffeeClickerLabel();
 		currentCoffeeBeans.setText( "Coffee Beans: 0" );
 		this.add( currentCoffeeBeans );
 
-		beansPerSecond = new JLabel();
+		beansPerSecond = new CoffeeClickerLabel();
 		beansPerSecond.setText( "Beans/sec: 0" );
 		this.add( beansPerSecond );
 
-		this.add( Box.createVerticalStrut( 50 ) );
+		// this.add( Box.createVerticalStrut( 50 ) );
 
-		countButton = new JButton();
-		countButton.setLayout( null );
+		countButton = new CoffeeClickerButton();
+		//countButton.setLayout( null );
 //		countButton.setPreferredSize( new Dimension( 250, 150 ) );
 		countButton.setText( "More Coffee!" );
 		countButton.setName( "coffeeButton" );
