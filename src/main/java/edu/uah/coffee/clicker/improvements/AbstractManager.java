@@ -3,7 +3,7 @@ package edu.uah.coffee.clicker.improvements;
 import edu.uah.coffee.clicker.CoffeeClickerModel;
 
 /**
- * @author trystanmay
+ * the base manager for buildings and upgrades.
  */
 public abstract class AbstractManager extends CoffeeClickerModel {
 
