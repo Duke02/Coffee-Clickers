@@ -1,16 +1,20 @@
 package edu.uah.coffee.clicker.graphics;
 
 import edu.uah.coffee.clicker.Constants;
+import edu.uah.coffee.clicker.ResourceManager;
 import edu.uah.coffee.clicker.controller.Controller;
 import edu.uah.coffee.clicker.controller.PlayerController;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GamePanel extends CoffeeClickerPanel {
 	private CoffeeClickerButton countButton;
 
 	private CoffeeClickerLabel currentCoffeeBeans;
 	private CoffeeClickerLabel beansPerSecond;
+
+	Image backgroundImage;
 
 	public GamePanel () {
 		super( Constants.GAME_PANEL_NAME );
@@ -36,6 +40,8 @@ public class GamePanel extends CoffeeClickerPanel {
 		countButton.setName( "coffeeButton" );
 		countButton.setVisible( true );
 		this.add( countButton );
+
+		this.backgroundImage = this.readImage( ResourceManager.getFile( "/images/background.jpg" ) );
 	}
 
 	public void addController ( Controller controller ) {
@@ -52,5 +58,11 @@ public class GamePanel extends CoffeeClickerPanel {
 
 	public void setBeansPerSecond ( int beansPerSecond ) {
 		this.beansPerSecond.setText( String.format( "Beans/second: %d", beansPerSecond ) );
+	}
+
+	@Override
+	public void paintComponent ( Graphics g ) {
+		super.paintComponent( g );
+		g.drawImage( this.backgroundImage, 0, 0, View.SCREEN_WIDTH, View.SCREEN_HEIGHT, null );
 	}
 }
