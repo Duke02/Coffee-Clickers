@@ -23,8 +23,9 @@ public class BuildingPanel extends CoffeeClickerPanel {
 	public BuildingPanel () {
 		super( Constants.BUILDING_PANEL_NAME );
 
-		setLayout( new GridLayout( 0, 2 ) );
-		setMaximumSize( new Dimension( 300, 200 ) );
+		this.setRelativeSize( 0.1, 0.1 );
+		setLayout( new GridLayout( 3, 2 ) );
+
 
 		buildingImage = new CoffeeClickerLabel();
 		buildingImage.setVisible( true );
@@ -97,6 +98,17 @@ public class BuildingPanel extends CoffeeClickerPanel {
 		super.addController( controller );
 		if ( controller instanceof BuildingController ) {
 			this.buyButton.addActionListener( ( ActionListener ) controller );
+		}
+	}
+
+	@Override
+	public void setRelativeSize ( double x, double y ) {
+		if ( this.getParent() == null ) {
+			super.setRelativeSize( x, y );
+		} else {
+			Dimension parentSize = this.getParent().getSize();
+			this.relativeSize = new Dimension( ( int ) ( parentSize.width * x ), ( int ) ( parentSize.height * y ) );
+			this.setSize( this.relativeSize );
 		}
 	}
 }
