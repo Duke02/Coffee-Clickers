@@ -8,7 +8,7 @@ import edu.uah.coffee.clicker.controller.PlayerController;
 import javax.swing.*;
 import java.awt.*;
 
-public class GamePanel extends CoffeeClickerPanel {
+public class GamePanel extends CoffeeClickerPanel implements Runnable {
 	private CoffeeClickerButton countButton;
 
 	private CoffeeClickerLabel currentCoffeeBeans;
@@ -64,5 +64,10 @@ public class GamePanel extends CoffeeClickerPanel {
 	public void paintComponent ( Graphics g ) {
 		super.paintComponent( g );
 		g.drawImage( this.backgroundImage, 0, 0, View.SCREEN_WIDTH, View.SCREEN_HEIGHT, null );
+	}
+
+	@Override
+	public void run () {
+
 	}
 }
