@@ -16,20 +16,39 @@ public class BuildingManager extends AbstractManager {
 	private Map< Integer, Building > buildings;
 	protected Player player;
 
+	/**
+	 * Creates a new building manager with the given model name from Constants.
+	 *
+	 * @see Constants#BUILDING_MANAGER_NAME
+	 */
 	public BuildingManager () {
 		super( Constants.BUILDING_MANAGER_NAME );
 
 		this.buildings = new HashMap<>();
 	}
 
+	/**
+	 * Sets the player to be used when purchasing a building.
+	 *
+	 * @param player
+	 */
 	public void setPlayer ( Player player ) {
 		this.player = player;
 	}
 
+	/**
+	 * @param buildingId the desired building's id
+	 * @return the requested building if it exists. Throws an exception otherwise.
+	 */
 	public Building getBuilding ( int buildingId ) {
 		return this.buildings.get( buildingId );
 	}
 
+	/**
+	 * Parses the provided data file to load in the buildings that it contains.
+	 *
+	 * @param filename the path to the data file to be parsed.
+	 */
 	public void parseJsonFile ( String filename ) {
 		Reader file = ResourceManager.getReader( filename );
 		Type buildingListType = new TypeToken< List< Building > >() {
@@ -45,6 +64,12 @@ public class BuildingManager extends AbstractManager {
 
 	}
 
+	/**
+	 * Buys the desired building the provided number of times.
+	 *
+	 * @param buildingId the id of the building to be purchased.
+	 * @param amount     the amount of the building to be purchased.
+	 */
 	public void buyBuilding ( int buildingId, int amount ) {
 		Building buildingToBuy = this.getBuilding( buildingId );
 		int wallet = this.player.getCoffeeBeans();
@@ -58,6 +83,11 @@ public class BuildingManager extends AbstractManager {
 		this.notifyObservers();
 	}
 
+	/**
+	 * Adds the observer to this object and all internal building objects.
+	 *
+	 * @param observer the new observer
+	 */
 	@Override
 	public void addObserver ( Observer observer ) {
 		super.addObserver( observer );
@@ -70,14 +100,27 @@ public class BuildingManager extends AbstractManager {
 		}
 	}
 
+	/**
+	 * Adds the building into the building manager.
+	 *
+	 * @param building the building to be added.
+	 */
 	public void addBuilding ( Building building ) {
 		this.buildings.put( building.getId(), building );
 	}
 
+	/**
+	 * Gets the list of buildings that are stored within the manager.
+	 *
+	 * @return an ArrayList of the stored buildings.
+	 */
 	public List< Building > getBuildings () {
 		return new ArrayList< Building >( this.buildings.values() );
 	}
 
+	/**
+	 * @return the total number of beans to be generated every second based on each purchased building.
+	 */
 	public int getBeansPerSecond () {
 		int out = 0;
 		for ( Building building : this.getBuildings() ) {
