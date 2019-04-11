@@ -21,10 +21,21 @@ import java.util.Observable;
 public class BuildingController extends Controller implements ActionListener, Runnable {
 	private Player Player;
 
+	/**
+	 * Creates a new building controller with the controller's name from Constants
+	 *
+	 * @see Constants#BUILDING_CONTROLLER_NAME
+	 */
 	public BuildingController () {
 		super( Constants.BUILDING_CONTROLLER_NAME );
 	}
 
+	/**
+	 * When a given Building or the Building Manager updates, the Building Controller will modify the view here.
+	 *
+	 * @param o   the model
+	 * @param arg the arguments passed.
+	 */
 	public void update ( Observable o, Object arg ) {
 
 		if ( ( o instanceof Building ) ) {
@@ -46,6 +57,16 @@ public class BuildingController extends Controller implements ActionListener, Ru
 
 	}
 
+	/**
+	 * Adds a model to the controller.
+	 * <p>
+	 * If the provided model is a BuildingManager, it has the BuildingsPanel update with the
+	 * buildings that are within the BuildingManager.
+	 *
+	 * @param model the model to be added.
+	 * @see BuildingsPanel
+	 * @see BuildingManager
+	 */
 	@Override
 	public void addModel ( CoffeeClickerModel model ) {
 		super.addModel( model );
@@ -60,6 +81,11 @@ public class BuildingController extends Controller implements ActionListener, Ru
 		}
 	}
 
+	/**
+	 * If the user has selected to buy a specific building, this will buy one of those buildings.
+	 *
+	 * @param e the ActionEvent that comes from the BuildingPanel's buy button.
+	 */
 	public void actionPerformed ( ActionEvent e ) {
 		if ( e.getActionCommand().equals( "buy" ) ) {
 			BuildingPanel panel = ( BuildingPanel ) ( ( JButton ) e.getSource() ).getParent();
@@ -68,6 +94,11 @@ public class BuildingController extends Controller implements ActionListener, Ru
 		}
 	}
 
+	/**
+	 * Adds to the player's total bean count based on the total beans per second of the buildings.
+	 *
+	 * @see BuildingManager#getBeansPerSecond()
+	 */
 	public void run () {
 		BuildingManager buildingManager = ( BuildingManager ) this.getModel( Constants.BUILDING_MANAGER_NAME );
 		Player player = ( Player ) this.getModel( Constants.PLAYER_MODEL_NAME );
