@@ -18,6 +18,11 @@ public class NewsManager extends CoffeeClickerModel {
 	protected int lastIndex;
 	protected Random randomEngine;
 
+	/**
+	 * Creates a new NewsManager using the manager name in Constants.
+	 *
+	 * @see Constants#NEWS_MANAGER_NAME
+	 */
 	public NewsManager () {
 		super( Constants.NEWS_MANAGER_NAME );
 		this.news = new ArrayList<>();
@@ -25,6 +30,9 @@ public class NewsManager extends CoffeeClickerModel {
 		this.lastIndex = - 1;
 	}
 
+	/**
+	 * @return a randomly selected news story that is stored within the manager.
+	 */
 	public News getCurrentNews () {
 		if ( this.news.size() == 0 ) {
 			return null;
@@ -39,6 +47,11 @@ public class NewsManager extends CoffeeClickerModel {
 		return this.news.get( currIndex );
 	}
 
+	/**
+	 * Parses the provided json file for any groundbreaking news stories.
+	 *
+	 * @param filename the path to the json file to be parsed.
+	 */
 	public void parseNewsDataFile ( String filename ) {
 		Reader file = ResourceManager.getReader( filename );
 		Type buildingListType = new TypeToken< List< News > >() {
