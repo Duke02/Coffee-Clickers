@@ -1,4 +1,4 @@
-package edu.uah.coffee.clicker.improvements;
+/*package edu.uah.coffee.clicker.improvements;
 
 
 import com.google.gson.Gson;
@@ -39,3 +39,4 @@ public class BuildingManager extends AbstractManager {
 		}
 	}
 }
+*/
