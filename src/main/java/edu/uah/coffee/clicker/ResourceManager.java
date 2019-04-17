@@ -33,6 +33,5 @@ public class ResourceManager {
 	public static File getFile ( String filename ) {
 		String path = ResourceManager.class.getResource( filename ).getFile();
 		return new File( path );
-
 	}
 }

@@ -9,44 +9,51 @@ import java.util.Map;
 
 public class View implements Runnable {
 	private static final Toolkit TOOLKIT = Toolkit.getDefaultToolkit();
-	public static final int SCREEN_WIDTH = ( int ) ( ( double ) TOOLKIT.getScreenSize().width * 0.9 );
-	public static final int SCREEN_HEIGHT = ( int ) ( ( double ) TOOLKIT.getScreenSize().height * 0.9 );
+	public static final int SCREEN_WIDTH = (int) ((double) TOOLKIT.getScreenSize().width * 0.9);
+	public static final int SCREEN_HEIGHT = (int) ((double) TOOLKIT.getScreenSize().height * 0.9);
+
+	private double time = 0;
 
 	private JFrame frame;
+	private GamePanel gamePanel;
 
-	private Map< String, CoffeeClickerPanel > panels;
+	private Map<String, CoffeeClickerPanel> panels;
 
-	public View () {
+	public View() {
 		frame = new JFrame();
-		frame.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
-		frame.setLayout( null );
-		frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		frame.setTitle( "Coffee Clickers" );
+		frame.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+		frame.setLayout(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("Coffee Clickers");
 
-		this.panels = new HashMap<>();
+		gamePanel = new GamePanel();
 
-		this.addPanel( new NewsPanel() );
-		this.addPanel( new GamePanel() );
-		this.addPanel( new BuildingsPanel() );
+		panels = new HashMap<>();
 
-		frame.setVisible( true );
+		addPanel(gamePanel);
+		addPanel(new NewsPanel());
+		addPanel(new BuildingsPanel());
+
+		frame.setVisible(true);
 	}
 
-	public void run () {
+	public void run() {
+		time += ((double) 1 / 60);
+		gamePanel.update(time);
 	}
 
-	private void addPanel ( CoffeeClickerPanel panel ) {
+	private void addPanel(CoffeeClickerPanel panel) {
 
-		this.panels.put( panel.getName(), panel );
-		this.frame.add( panel );
-		panel.setVisible( true );
+		panels.put(panel.getName(), panel);
+		frame.add(panel);
+		panel.setVisible(true);
 	}
 
-	public void setController ( String panelName, Controller controller ) {
-		this.panels.get( panelName ).addController( controller );
+	public void setController(String panelName, Controller controller) {
+		panels.get(panelName).addController(controller);
 	}
 
-	public CoffeeClickerPanel getPanel ( String name ) {
-		return this.panels.get( name );
+	public CoffeeClickerPanel getPanel(String name) {
+		return panels.get(name);
 	}
 }
