@@ -40,6 +40,8 @@ public class GamePanel extends CoffeeClickerPanel {
 		if ( controller.getName().equals( Constants.PLAYER_CONTROLLER_NAME ) ) {
 			currentCoffeeBeans.addPropertyChangeListener( "coffeeBeans", controller );
 			countButton.addMouseListener( ( PlayerController ) controller );
+		} else if ( controller.getName().equals( Constants.SAVE_GAME_CONTROLLER_NAME ) ) {
+
 		}
 	}
 
