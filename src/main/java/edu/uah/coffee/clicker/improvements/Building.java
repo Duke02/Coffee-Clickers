@@ -151,5 +151,5 @@ public class Building extends CoffeeClickerModel implements Improvement {
 		this.imageFileName = filename;
 		this.setChanged();
 	}
-        
+
 }

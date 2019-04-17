@@ -3,6 +3,7 @@ package edu.uah.coffee.clicker;
 import edu.uah.coffee.clicker.controller.BuildingController;
 import edu.uah.coffee.clicker.controller.NewsController;
 import edu.uah.coffee.clicker.controller.PlayerController;
+import edu.uah.coffee.clicker.controller.SaveGameController;
 import edu.uah.coffee.clicker.graphics.View;
 import edu.uah.coffee.clicker.improvements.BuildingManager;
 import edu.uah.coffee.clicker.news.NewsManager;
@@ -46,6 +47,10 @@ public class CoffeeClickerMain {
 		buildingController.addModel( player );
 		numOfCores++;
 
+		SaveGameController saveGameController = new SaveGameController();
+		saveGameController.addModel( player );
+		saveGameController.addModel( buildingManager );
+		saveGameController.addView( view.getPanel( Constants.GAME_PANEL_NAME ) );
 
 		// Schedule the view and news controller to do their job.
 		ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor( numOfCores );

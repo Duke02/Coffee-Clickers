@@ -13,4 +13,5 @@ public class Constants {
 	public static final String BUILDING_MANAGER_NAME = "building-manager";
 	public static final String BUILDING_PANEL_NAME = "building-panel";
 	public static final String UPGRADE_MANAGER_NAME = "upgrade-manager";
+	public static final String SAVE_GAME_CONTROLLER_NAME = "save-game-controller";
 }
