@@ -9,6 +9,8 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.BoxLayout;
+
 public class BuildingsPanel extends CoffeeClickerPanel {
 
 	Map<Integer, BuildingPanel> buildingPanels;
@@ -16,11 +18,11 @@ public class BuildingsPanel extends CoffeeClickerPanel {
 	public BuildingsPanel() {
 		super(Constants.BUILDING_PANEL_NAME);
 
-		setRelativeLocation(0.85, 0);
-		setRelativeSize(0.15, 1);
+		setRelativeLocation(0.8, 0);
+		setRelativeSize(0.2, 1);
 
 		buildingPanels = new HashMap<>();
-		setLayout(new FlowLayout());
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 		backgroundImage = readImage(ResourceManager.getFile("/images/background3.png"));
 		repaint();

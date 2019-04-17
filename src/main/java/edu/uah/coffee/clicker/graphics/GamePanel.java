@@ -14,6 +14,7 @@ public class GamePanel extends CoffeeClickerPanel {
 	private double time = 0;
 
 	private CoffeeClickerButton countButton;
+	private CoffeeClickerButton saveButton;
 
 	private CoffeeClickerLabel currentCoffeeBeans;
 	private CoffeeClickerLabel beansPerSecond;
@@ -23,7 +24,7 @@ public class GamePanel extends CoffeeClickerPanel {
 	public GamePanel() {
 		super(Constants.GAME_PANEL_NAME);
 		setRelativeLocation(0, 0.1);
-		setRelativeSize(0.85, 0.9);
+		setRelativeSize(0.8, 0.9);
 
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -36,12 +37,16 @@ public class GamePanel extends CoffeeClickerPanel {
 		add(beansPerSecond);
 
 		countButton = new CoffeeClickerButton();
-		// countButton.setLayout(null);
-		// countButton.setPreferredSize(new Dimension(250, 150));
 		countButton.setText("More Coffee!");
 		countButton.setName("coffeeButton");
 		countButton.setVisible(true);
 		add(countButton);
+		
+		saveButton = new CoffeeClickerButton();
+		saveButton.setText("Save Game!");
+		saveButton.setName("saveButton");
+		saveButton.setVisible(true);
+		add(saveButton);
 
 		backgroundImage = readImage(ResourceManager.getFile("/images/background.png"));
 		repaint();

@@ -13,7 +13,7 @@ public class NewsPanel extends CoffeeClickerPanel {
 	public NewsPanel() {
 		super(Constants.NEWS_PANEL_NAME);
 		setRelativeLocation(0, 0);
-		setRelativeSize(0.85, 0.1);
+		setRelativeSize(0.8, 0.1);
 
 		setLayout(new BorderLayout());
 		// setSize( 1000, 1000 );
