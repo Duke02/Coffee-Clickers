@@ -5,9 +5,8 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
 public class SaveModel {
-    private static final String filepath="C:\\CoffeeClckekr\\Saves";
  
-    public static void main(String args[]) {
+    public static void Save(String args[]) {
  
         ResourceManager objectIO = new ResourceManager();
  
@@ -15,10 +14,10 @@ public class SaveModel {
         objectIO.WriteObjectToFile(player);
     }
  
-    public void WriteObjectToFile(Object serObj) {
+    public void WriteObjectToFile(Object serObj, String filepath) {
  
         try {
- 
+            
             FileOutputStream fileOut = new FileOutputStream(filepath);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(serObj);
