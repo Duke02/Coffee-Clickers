@@ -31,7 +31,7 @@ public class SaveGameController extends Controller implements ActionListener {
 
 	private void saveGame ( String filepath ) {
 		for ( CoffeeClickerModel model : this.models.values() ) {
-			ResourceManager.writeObjectToFile( model, filepath );
+			ResourceManager.writeObjectToFile( filepath, model );
 		}
 	}
 

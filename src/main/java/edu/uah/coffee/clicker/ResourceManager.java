@@ -1,53 +1,44 @@
 package edu.uah.coffee.clicker;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Reader;
-import java.io.Serializable;
+import java.io.*;
 
-public class ResourceManager  implements Serializable{
+public class ResourceManager implements Serializable {
 
 	public static Reader getReader ( String filename ) {
 		InputStream is = ResourceManager.class.getResourceAsStream( filename );
 		return new InputStreamReader( is );
 	}
 
-        public void WriteObjectToFile(String filepath,CoffeeClickerModel model) {
+	public static void writeObjectToFile ( String filepath, CoffeeClickerModel model ) {
 
-        try {
+		try {
 
-            FileOutputStream fileOut = new FileOutputStream(filepath);
-            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            objectOut.writeObject(model);
-            objectOut.close();
+			FileOutputStream fileOut = new FileOutputStream( filepath );
+			ObjectOutputStream objectOut = new ObjectOutputStream( fileOut );
+			objectOut.writeObject( model );
+			objectOut.close();
 
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
+		} catch ( Exception ex ) {
+			ex.printStackTrace();
+		}
+	}
 
-    public Object ReadObjectFromFile(String filepath) {
+	public Object readObjectFromFile ( String filepath ) {
 
-        try {
+		try {
 
-            FileInputStream fileIn = new FileInputStream(filepath);
-            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+			FileInputStream fileIn = new FileInputStream( filepath );
+			ObjectInputStream objectIn = new ObjectInputStream( fileIn );
 
-            Object obj = objectIn.readObject();
+			Object obj = objectIn.readObject();
 
-            objectIn.close();
-            return obj;
+			objectIn.close();
+			return obj;
 
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
-        }
-    }
-   }
+		} catch ( Exception ex ) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
+}
 
