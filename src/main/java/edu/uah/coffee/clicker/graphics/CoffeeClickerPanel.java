@@ -28,16 +28,16 @@ public abstract class CoffeeClickerPanel extends JPanel {
 	/**
 	 * The internal storage of the controllers that connects with the view.
 	 */
-	protected Map<String, Controller> controllers;
-	
+	protected Map< String, Controller > controllers;
+
 	protected BufferedImage backgroundImage;
-	
+
 	/**
 	 * Constructor for base class for panels in the view.
 	 *
 	 * @param name The view name to be used as a key for Controller views.
 	 */
-	public CoffeeClickerPanel(String name) {
+	public CoffeeClickerPanel ( String name ) {
 		this.name = name;
 		controllers = new HashMap<>();
 		relativeSize = new Dimension();
@@ -50,8 +50,8 @@ public abstract class CoffeeClickerPanel extends JPanel {
 	 * @param name the key of the controller
 	 * @return the controller within the panel with the given name.
 	 */
-	protected Controller getController(String name) {
-		return controllers.get(name);
+	protected Controller getController ( String name ) {
+		return controllers.get( name );
 	}
 
 	/**
@@ -59,9 +59,9 @@ public abstract class CoffeeClickerPanel extends JPanel {
 	 *
 	 * @param controller The controller to add.
 	 */
-	public void addController(Controller controller) {
-		controllers.put(controller.getName(), controller);
-		addPropertyChangeListener(controller.getName(), controller);
+	public void addController ( Controller controller ) {
+		controllers.put( controller.getName(), controller );
+		addPropertyChangeListener( controller.getName(), controller );
 	}
 
 	/**
@@ -69,32 +69,32 @@ public abstract class CoffeeClickerPanel extends JPanel {
 	 *
 	 * @return the name of the view.
 	 */
-	public String getName() {
+	public String getName () {
 		return name;
 	}
 
-	public void setRelativeLocation(double x, double y) {
-		setLocation((int) (x * View.SCREEN_WIDTH), (int) (y * View.SCREEN_HEIGHT));
+	public void setRelativeLocation ( double x, double y ) {
+		setLocation( ( int ) ( x * View.SCREEN_WIDTH ), ( int ) ( y * View.SCREEN_HEIGHT ) );
 	}
 
-	public void setRelativeSize(double x, double y) {
-		relativeSize = new Dimension((int) (x * View.SCREEN_WIDTH), (int) (y * View.SCREEN_HEIGHT));
-		setSize(relativeSize);
+	public void setRelativeSize ( double x, double y ) {
+		relativeSize = new Dimension( ( int ) ( x * View.SCREEN_WIDTH ), ( int ) ( y * View.SCREEN_HEIGHT ) );
+		setSize( relativeSize );
 	}
 
-	public Dimension getRelativeSize() {
+	public Dimension getRelativeSize () {
 		return relativeSize;
 	}
 
-	public Point getRelativeLocation() {
+	public Point getRelativeLocation () {
 		return relativeLocation;
 	}
 
-	public BufferedImage readImage(File file) {
+	public BufferedImage readImage ( File file ) {
 		BufferedImage image = null;
 		try {
-			image = ImageIO.read(file);
-		} catch (IOException e) {
+			image = ImageIO.read( file );
+		} catch ( IOException e ) {
 			e.printStackTrace();
 		}
 		return image;

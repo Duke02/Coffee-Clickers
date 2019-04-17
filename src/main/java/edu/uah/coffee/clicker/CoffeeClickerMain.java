@@ -46,6 +46,7 @@ public class CoffeeClickerMain {
 		buildingController.addModel( player );
 		numOfCores++;
 
+		view.pack();
 
 		// Schedule the view and news controller to do their job.
 		ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor( numOfCores );
