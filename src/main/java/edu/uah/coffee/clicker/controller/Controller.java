@@ -18,8 +18,8 @@ public abstract class Controller implements Observer, PropertyChangeListener {
 
 	public Controller ( String name ) {
 		this.name = name;
-		this.views = new HashMap< String, CoffeeClickerPanel >();
-		this.models = new HashMap< String, CoffeeClickerModel >();
+		this.views = new HashMap<>();
+		this.models = new HashMap<>();
 	}
 
 	protected CoffeeClickerPanel getView ( String name ) {
