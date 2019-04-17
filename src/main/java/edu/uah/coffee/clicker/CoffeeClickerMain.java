@@ -44,6 +44,7 @@ public class CoffeeClickerMain {
 		buildingController.addView( view.getPanel( Constants.BUILDING_PANEL_NAME ) );
 		buildingController.addModel( buildingManager );
 		buildingController.addModel( player );
+		buildingController.addView( view.getPanel( Constants.GAME_PANEL_NAME ) );
 		numOfCores++;
 
 

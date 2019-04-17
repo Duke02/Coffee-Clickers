@@ -1,12 +1,14 @@
 package edu.uah.coffee.clicker.graphics;
 
 import edu.uah.coffee.clicker.Constants;
+import edu.uah.coffee.clicker.ResourceManager;
 import edu.uah.coffee.clicker.controller.BuildingController;
 import edu.uah.coffee.clicker.controller.Controller;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 /**
  * Panel for displaying individual buildings.
@@ -19,6 +21,8 @@ public class BuildingPanel extends CoffeeClickerPanel {
 	private CoffeeClickerLabel buildingImage;
 	private CoffeeClickerButton buyButton;
 	private int buildingId;
+
+	private BufferedImage image;
 
 	public BuildingPanel() {
 		super(Constants.BUILDING_PANEL_NAME);
@@ -78,6 +82,10 @@ public class BuildingPanel extends CoffeeClickerPanel {
 		return buildingId;
 	}
 
+	public BufferedImage getBuildingImage() {
+		return image;
+	}
+
 	public void setBuildingId(int id) {
 		if (buildingId == -1) {
 			// Ignore any changes to building id.
@@ -86,7 +94,15 @@ public class BuildingPanel extends CoffeeClickerPanel {
 	}
 
 	public void setBuildingImage(String filename) {
-		buildingImage.setIcon(new ImageIcon(filename));
+		ImageIcon imageIcon = new ImageIcon(filename);
+		buildingImage.setIcon(imageIcon);
+		BufferedImage bi = new BufferedImage(imageIcon.getIconWidth(), imageIcon.getIconHeight(),
+				BufferedImage.TYPE_INT_ARGB);
+		Graphics g = bi.createGraphics();
+		imageIcon.paintIcon(null, g, 0, 0);
+		g.dispose();
+		image = bi;
+		// image=(BufferedImage)imageIcon;//readImage(ResourceManager.getFile(filename));
 	}
 
 	public void setBPS(int bps) {
