@@ -18,7 +18,7 @@ public class ResourceManager  implements Serializable{
  
         public void WriteObjectToFile(String filepath,CoffeeClickerModel model) {
  
-        try {
+        try { 
  
             FileOutputStream fileOut = new FileOutputStream(filepath);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
