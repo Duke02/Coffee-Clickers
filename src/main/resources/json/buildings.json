@@ -1,0 +1,50 @@
+[
+  {
+    "id": 0,
+    "name": "Coffee Brew Set",
+    "beansPerSecond": 1,
+    "initialCost": 10,
+    "costCoefficient": 5,
+    "imageFileName": "/images/buildings/0.png"
+  },
+  {
+    "id": 1,
+    "name": "Coffee Stand",
+    "beansPerSecond": 2,
+    "initialCost": 25,
+    "costCoefficient": 7,
+    "imageFileName": "/images/buildings/1.png"
+  },
+  {
+    "id": 2,
+    "name": "Coffee Shop",
+    "beansPerSecond": 5,
+    "initialCost": 50,
+    "costCoefficient": 12,
+    "imageFileName": "/images/buildings/2.png"
+  },
+  {
+    "id": 3,
+    "name": "MoonBills",
+    "beansPerSecond": 11,
+    "initialCost": 100,
+    "costCoefficient": 15,
+    "imageFileName": "/images/buildings/3.png"
+  },
+  {
+    "id": 4,
+    "name": "Piercin' Pastries",
+    "beansPerSecond": 12,
+    "initialCost": 125,
+    "costCoefficient": 15,
+    "imageFileName": "/images/buildings/4.png"
+  },
+  {
+    "id": 5,
+    "name": "Bean Tree",
+    "beansPerSecond": 16,
+    "initialCost": 180,
+    "costCoefficient": 20,
+    "imageFileName": "/images/buildings/5.png"
+  }
+]
