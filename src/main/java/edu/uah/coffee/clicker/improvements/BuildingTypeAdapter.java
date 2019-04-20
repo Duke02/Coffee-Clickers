@@ -24,7 +24,7 @@ public class BuildingTypeAdapter extends TypeAdapter {
 			if ( "name".equals( s ) ) {
 				building.setName( in.nextString() );
 				building.setModelName( building.getName() );
-			} else if ( "cookiesPerSecond".equals( s ) ) {
+			} else if ( "beansPerSecond".equals( s ) ) {
 				building.setBeansPerSecond( in.nextInt() );
 			} else if ( "costCoefficient".equals( s ) ) {
 				building.setCostCoefficient( in.nextInt() );
