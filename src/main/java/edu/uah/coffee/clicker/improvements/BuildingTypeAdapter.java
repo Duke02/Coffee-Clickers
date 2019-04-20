@@ -14,6 +14,14 @@ public class BuildingTypeAdapter extends TypeAdapter {
 
 	}
 
+	/**
+	 * Parsing function for the Building Json file.
+	 *
+	 * @param in
+	 * @return the Building that was parsed.
+	 * @throws IOException if the json file couldn't begin parsing
+	 * @see Building
+	 */
 	public Object read ( JsonReader in ) throws IOException {
 
 		final Building building = new Building();

@@ -24,6 +24,12 @@ public class ResourceManager {
 		}
 	}
 
+	/**
+	 * Gets an input stream for the given file path is at.
+	 *
+	 * @param filename the file path to be read from.
+	 * @return
+	 */
 	public static InputStream getInputStream ( String filename ) {
 		return ResourceManager.class.getResourceAsStream( filename );
 	}

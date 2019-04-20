@@ -19,10 +19,6 @@ public class SaveGameController extends Controller implements ActionListener {
 
 	@Override
 	public void update ( Observable o, Object arg ) {
-		if ( ! ( o instanceof CoffeeClickerModel ) ) {
-			return;
-		}
-
 
 	}
 
@@ -31,12 +27,22 @@ public class SaveGameController extends Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Saves the game at the provided file path.
+	 *
+	 * @param filepath the file path to save the game to.
+	 */
 	private void saveGame ( String filepath ) {
 		for ( CoffeeClickerModel model : this.models.values() ) {
 			ResourceManager.writeObjectToFile( filepath, model );
 		}
 	}
 
+	/**
+	 * Used to save the game whenever the saveButton from GamePanel is clicked.
+	 *
+	 * @param e
+	 */
 	@Override
 	public void actionPerformed ( ActionEvent e ) {
 		if ( e.getActionCommand().equals( "saveGame" ) ) {

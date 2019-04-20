@@ -135,6 +135,11 @@ public class BuildingManager extends AbstractManager {
 		return out;
 	}
 
+	/**
+	 * Returns the player. To be used when loading from a saved game.
+	 *
+	 * @return the previously saved player.
+	 */
 	public Player getPlayer () {
 		return this.player;
 	}

@@ -84,5 +84,10 @@ public class Constants {
 	 */
 	public static final String SAVE_GAME_CONTROLLER_NAME = "save-game-controller";
 
+	/**
+	 * The file path to save the game to.
+	 *
+	 * @see SaveGameController
+	 */
 	public static final String SAVE_GAME_FILE_PATH = "coffee-clickers.dat";
 }
