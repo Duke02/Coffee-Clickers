@@ -2,49 +2,49 @@
   {
     "id": 0,
     "name": "Coffee Brew Set",
-    "cookiesPerSecond": 1,
+    "beansPerSecond": 1,
     "initialCost": 10,
     "costCoefficient": 5,
-    "imageFileName": "images/building-0.png"
+    "imageFileName": "/images/buildings/0.png"
   },
   {
     "id": 1,
     "name": "Coffee Stand",
-    "cookiesPerSecond": 2,
+    "beansPerSecond": 2,
     "initialCost": 25,
     "costCoefficient": 7,
-    "imageFileName": "images/building-1.jpg"
+    "imageFileName": "/images/buildings/1.png"
   },
   {
     "id": 2,
     "name": "Coffee Shop",
-    "cookiesPerSecond": 5,
+    "beansPerSecond": 5,
     "initialCost": 50,
     "costCoefficient": 12,
-    "imageFileName": "images/building-2.jpg"
+    "imageFileName": "/images/buildings/2.png"
   },
   {
     "id": 3,
     "name": "MoonBills",
-    "cookiesPerSecond": 11,
+    "beansPerSecond": 11,
     "initialCost": 100,
     "costCoefficient": 15,
-    "imageFileName": "images/building-3.png"
+    "imageFileName": "/images/buildings/3.png"
   },
   {
     "id": 4,
     "name": "Piercin' Pastries",
-    "cookiesPerSecond": 12,
+    "beansPerSecond": 12,
     "initialCost": 125,
     "costCoefficient": 15,
-    "imageFileName": "images/building-4.jpg"
+    "imageFileName": "/images/buildings/4.png"
   },
   {
     "id": 5,
     "name": "Bean Tree",
-    "cookiesPerSecond": 16,
+    "beansPerSecond": 16,
     "initialCost": 180,
     "costCoefficient": 20,
-    "imageFileName": "images/building-5.jpg"
+    "imageFileName": "/images/buildings/5.png"
   }
 ]

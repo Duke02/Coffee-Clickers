@@ -12,7 +12,10 @@ public class View implements Runnable {
 	public static final int SCREEN_WIDTH = ( int ) ( ( double ) TOOLKIT.getScreenSize().width * 0.9 );
 	public static final int SCREEN_HEIGHT = ( int ) ( ( double ) TOOLKIT.getScreenSize().height * 0.9 );
 
+	private double time = 0;
+
 	private JFrame frame;
+	private GamePanel gamePanel;
 
 	private Map< String, CoffeeClickerPanel > panels;
 
@@ -23,30 +26,40 @@ public class View implements Runnable {
 		frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		frame.setTitle( "Coffee Clickers" );
 
-		this.panels = new HashMap<>();
+		gamePanel = new GamePanel();
 
-		this.addPanel( new NewsPanel() );
-		this.addPanel( new GamePanel() );
-		this.addPanel( new BuildingsPanel() );
+		panels = new HashMap<>();
+
+		addPanel( gamePanel );
+		addPanel( new NewsPanel() );
+		addPanel( new BuildingsPanel() );
 
 		frame.setVisible( true );
 	}
 
 	public void run () {
+		time += ( ( double ) 1 / 60 );
+		gamePanel.update( time );
 	}
 
 	private void addPanel ( CoffeeClickerPanel panel ) {
 
-		this.panels.put( panel.getName(), panel );
-		this.frame.add( panel );
+		panels.put( panel.getName(), panel );
+		frame.add( panel );
 		panel.setVisible( true );
 	}
 
+	public void pack () {
+		for ( CoffeeClickerPanel panel : this.panels.values() ) {
+			panel.validate();
+		}
+	}
+
 	public void setController ( String panelName, Controller controller ) {
-		this.panels.get( panelName ).addController( controller );
+		panels.get( panelName ).addController( controller );
 	}
 
 	public CoffeeClickerPanel getPanel ( String name ) {
-		return this.panels.get( name );
+		return panels.get( name );
 	}
 }

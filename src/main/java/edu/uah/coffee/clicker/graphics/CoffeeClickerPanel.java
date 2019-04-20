@@ -30,6 +30,8 @@ public abstract class CoffeeClickerPanel extends JPanel {
 	 */
 	protected Map< String, Controller > controllers;
 
+	protected BufferedImage backgroundImage;
+
 	/**
 	 * Constructor for base class for panels in the view.
 	 *
@@ -37,9 +39,9 @@ public abstract class CoffeeClickerPanel extends JPanel {
 	 */
 	public CoffeeClickerPanel ( String name ) {
 		this.name = name;
-		this.controllers = new HashMap<>();
-		this.relativeSize = new Dimension();
-		this.relativeLocation = new Point();
+		controllers = new HashMap<>();
+		relativeSize = new Dimension();
+		relativeLocation = new Point();
 	}
 
 	/**
@@ -49,7 +51,7 @@ public abstract class CoffeeClickerPanel extends JPanel {
 	 * @return the controller within the panel with the given name.
 	 */
 	protected Controller getController ( String name ) {
-		return this.controllers.get( name );
+		return controllers.get( name );
 	}
 
 	/**
@@ -58,8 +60,8 @@ public abstract class CoffeeClickerPanel extends JPanel {
 	 * @param controller The controller to add.
 	 */
 	public void addController ( Controller controller ) {
-		this.controllers.put( controller.getName(), controller );
-		this.addPropertyChangeListener( controller.getName(), controller );
+		controllers.put( controller.getName(), controller );
+		addPropertyChangeListener( controller.getName(), controller );
 	}
 
 	/**
@@ -68,7 +70,7 @@ public abstract class CoffeeClickerPanel extends JPanel {
 	 * @return the name of the view.
 	 */
 	public String getName () {
-		return this.name;
+		return name;
 	}
 
 	public void setRelativeLocation ( double x, double y ) {
@@ -76,16 +78,16 @@ public abstract class CoffeeClickerPanel extends JPanel {
 	}
 
 	public void setRelativeSize ( double x, double y ) {
-		this.relativeSize = new Dimension( ( int ) ( x * View.SCREEN_WIDTH ), ( int ) ( y * View.SCREEN_HEIGHT ) );
+		relativeSize = new Dimension( ( int ) ( x * View.SCREEN_WIDTH ), ( int ) ( y * View.SCREEN_HEIGHT ) );
 		setSize( relativeSize );
 	}
 
 	public Dimension getRelativeSize () {
-		return this.relativeSize;
+		return relativeSize;
 	}
 
 	public Point getRelativeLocation () {
-		return this.relativeLocation;
+		return relativeLocation;
 	}
 
 	public BufferedImage readImage ( File file ) {

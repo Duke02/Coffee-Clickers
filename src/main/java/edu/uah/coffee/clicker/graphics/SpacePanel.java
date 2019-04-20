@@ -7,9 +7,9 @@ import javax.swing.*;
  */
 public class SpacePanel extends JPanel {
 
-	public SpacePanel ( int width, int height ) {
+	public SpacePanel(int width, int height) {
 		super();
-		this.add( Box.createHorizontalStrut( width ) );
-		this.add( Box.createVerticalStrut( height ) );
+		this.add(Box.createHorizontalStrut(width));
+		this.add(Box.createVerticalStrut(height));
 	}
 }

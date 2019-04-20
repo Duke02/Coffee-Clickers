@@ -15,6 +15,8 @@ public class Building extends CoffeeClickerModel implements Improvement {
 	private int initialCost;
 	private String imageFileName;
 
+	private static final long serialVersionUID = 99999L;
+
 	/**
 	 * Creates a new building with the given parameters.
 	 *

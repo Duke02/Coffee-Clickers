@@ -5,6 +5,7 @@ import edu.uah.coffee.clicker.Constants;
 import edu.uah.coffee.clicker.Player;
 import edu.uah.coffee.clicker.graphics.BuildingPanel;
 import edu.uah.coffee.clicker.graphics.BuildingsPanel;
+import edu.uah.coffee.clicker.graphics.GamePanel;
 import edu.uah.coffee.clicker.improvements.Building;
 import edu.uah.coffee.clicker.improvements.BuildingManager;
 
@@ -42,12 +43,16 @@ public class BuildingController extends Controller implements ActionListener, Ru
 			Building building = ( Building ) o;
 			BuildingsPanel buildingsContainerPanel = ( BuildingsPanel ) this.getView( Constants.BUILDING_PANEL_NAME );
 			buildingsContainerPanel.updateBuilding( building );
+
+
 		} else if ( o instanceof BuildingManager ) {
 			BuildingManager buildingManager = ( BuildingManager ) o;
 			BuildingsPanel buildingsContainerPanel = ( BuildingsPanel ) this.getView( Constants.BUILDING_PANEL_NAME );
 			for ( Building building : buildingManager.getBuildings() ) {
 				buildingsContainerPanel.updateBuilding( building );
 			}
+			GamePanel gamePanel = ( GamePanel ) this.getView( Constants.GAME_PANEL_NAME );
+			gamePanel.setBeansPerSecond( buildingManager.getBeansPerSecond() );
 		}
 
 
@@ -72,12 +77,7 @@ public class BuildingController extends Controller implements ActionListener, Ru
 		super.addModel( model );
 		// Have all of the buildings put into the building panel view.
 		if ( model instanceof BuildingManager ) {
-			BuildingManager buildingManager = ( BuildingManager ) model;
-			BuildingsPanel buildingsContainerPanel = ( BuildingsPanel ) this.getView( Constants.BUILDING_PANEL_NAME );
-
-			for ( Building building : buildingManager.getBuildings() ) {
-				buildingsContainerPanel.updateBuilding( building );
-			}
+			this.update( model, null );
 		}
 	}
 
@@ -88,9 +88,16 @@ public class BuildingController extends Controller implements ActionListener, Ru
 	 */
 	public void actionPerformed ( ActionEvent e ) {
 		if ( e.getActionCommand().equals( "buy" ) ) {
+
+
 			BuildingPanel panel = ( BuildingPanel ) ( ( JButton ) e.getSource() ).getParent();
 			BuildingManager buildingManager = ( ( BuildingManager ) this.getModel( Constants.BUILDING_MANAGER_NAME ) );
-			buildingManager.buyBuilding( panel.getBuildingId(), 1 );
+			boolean didBuy = buildingManager.buyBuilding( panel.getBuildingId(), 1 );
+			if ( didBuy ) {
+				GamePanel gamePanel = ( GamePanel ) this.getView( Constants.GAME_PANEL_NAME );
+				gamePanel.addBuilding( panel.getBuildingImage() );
+
+			}
 		}
 	}
 

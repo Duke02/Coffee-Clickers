@@ -1,9 +1,11 @@
 package edu.uah.coffee.clicker.graphics;
 
 import edu.uah.coffee.clicker.Constants;
+import edu.uah.coffee.clicker.ResourceManager;
 import edu.uah.coffee.clicker.controller.Controller;
 import edu.uah.coffee.clicker.improvements.Building;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,60 +14,70 @@ public class BuildingsPanel extends CoffeeClickerPanel {
 
 	Map< Integer, BuildingPanel > buildingPanels;
 
-
 	public BuildingsPanel () {
 		super( Constants.BUILDING_PANEL_NAME );
 
-		setRelativeLocation( 0.6, 0 );
+		setRelativeLocation( 0.8, 0 );
 		setRelativeSize( 0.2, 1 );
 
-		this.buildingPanels = new HashMap<>();
-		setLayout( new FlowLayout() );
+		buildingPanels = new HashMap<>();
+		setLayout( new BoxLayout( this, BoxLayout.Y_AXIS ) );
 
+		backgroundImage = readImage( ResourceManager.getFile( "/images/background3.png" ) );
+		repaint();
 	}
 
 	public void updateBuilding ( Building building ) {
 		BuildingPanel buildingPanel;
-		boolean wasIn = this.buildingPanels.containsKey( building.getId() );
-		double numOfBuildings = this.buildingPanels.size();
+		boolean wasIn = buildingPanels.containsKey( building.getId() );
 		if ( ! wasIn ) {
 			buildingPanel = new BuildingPanel();
-			numOfBuildings++;
 		} else {
-			buildingPanel = this.buildingPanels.get( building.getId() );
+			buildingPanel = buildingPanels.get( building.getId() );
 		}
 
-		for ( BuildingPanel panel : this.buildingPanels.values() ) {
-			panel.setRelativeSize( 1.0, 1.0 / numOfBuildings );
-		}
-
-		buildingPanel.setRelativeSize( 1.0, 1.0 / numOfBuildings );
 
 		buildingPanel.setBuildingId( building.getId() );
 		buildingPanel.setBuildingName( building.getName() );
 		buildingPanel.setNumberBought( building.getNumberBought() );
 		buildingPanel.setCost( building.getCost() + building.getCostCoefficient() );
-		buildingPanel.setBuildingImage( building.getImageFileName() );
+		buildingPanel.setBuildingImageLabel( building.getImageFileName() );
 		buildingPanel.setBPS( ( int ) building.getBeansPerSecond() );
+		buildingPanel.setBuildingImageLabel( building.getImageFileName() );
 
 		if ( ! wasIn ) {
-			this.add( buildingPanel );
-			buildingPanel.addController( this.getController( Constants.BUILDING_CONTROLLER_NAME ) );
+			for ( BuildingPanel panel : buildingPanels.values() ) {
+				panel.setRelativeSize( 1.0, 1.0 / ( buildingPanels.size() + 1 ) );
+			}
+
+			add( buildingPanel );
+			buildingPanel.setRelativeSize( 1.0, 1.0 / ( buildingPanels.size() + 1 ) );
+			buildingPanel.addController( getController( Constants.BUILDING_CONTROLLER_NAME ) );
 		}
 
 
-		this.buildingPanels.put( building.getId(), buildingPanel );
+		buildingPanels.put( building.getId(), buildingPanel );
 	}
 
 	@Override
 	public void addController ( Controller controller ) {
 		super.addController( controller );
-		this.addControllerToPanels( controller );
+		addControllerToPanels( controller );
 	}
 
 	private void addControllerToPanels ( Controller controller ) {
-		for ( BuildingPanel buildingPanel : this.buildingPanels.values() ) {
+		for ( BuildingPanel buildingPanel : buildingPanels.values() ) {
 			buildingPanel.addController( controller );
 		}
 	}
+
+	protected void paintComponent ( Graphics g ) {
+		super.paintComponent( g );
+		Graphics2D g2 = ( Graphics2D ) g.create();
+
+		g2.drawImage( backgroundImage, 0, 0, getSize().width, getSize().height, this );
+
+		g2.dispose();
+	}
+
 }

@@ -3,6 +3,7 @@ package edu.uah.coffee.clicker;
 import edu.uah.coffee.clicker.controller.BuildingController;
 import edu.uah.coffee.clicker.controller.NewsController;
 import edu.uah.coffee.clicker.controller.PlayerController;
+import edu.uah.coffee.clicker.controller.SaveGameController;
 import edu.uah.coffee.clicker.graphics.BuildingPanel;
 import edu.uah.coffee.clicker.graphics.BuildingsPanel;
 import edu.uah.coffee.clicker.graphics.GamePanel;
@@ -75,4 +76,18 @@ public class Constants {
 	 * @see BuildingPanel
 	 */
 	public static final String BUILDING_PANEL_NAME = "building-panel";
+
+	/**
+	 * The controller name to be used by the SaveGameController which saves the game.
+	 *
+	 * @see SaveGameController
+	 */
+	public static final String SAVE_GAME_CONTROLLER_NAME = "save-game-controller";
+
+	/**
+	 * The file path to save the game to.
+	 *
+	 * @see SaveGameController
+	 */
+	public static final String SAVE_GAME_FILE_PATH = "coffee-clickers.dat";
 }

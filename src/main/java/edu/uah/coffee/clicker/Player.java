@@ -2,6 +2,7 @@ package edu.uah.coffee.clicker;
 
 public class Player extends CoffeeClickerModel {
 
+	private static final long serialVersionUID = 9999L;
 
 	int numberOfCoffeeBeans;
 
