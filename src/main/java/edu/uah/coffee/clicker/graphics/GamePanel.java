@@ -22,6 +22,9 @@ public class GamePanel extends CoffeeClickerPanel {
 
 	private ArrayList<BufferedImage> buildings = new ArrayList<BufferedImage>();
 
+	/*
+	 * constructor for the gamePanel
+	 */
 	public GamePanel() {
 		super(Constants.GAME_PANEL_NAME);
 		setRelativeLocation(0, 0.1);
@@ -76,11 +79,19 @@ public class GamePanel extends CoffeeClickerPanel {
 		buildings.add(image);
 	}
 
+	/*
+	 * updates the time and repaints the screen
+	 * @param current game time
+	 */
 	public void update(double time) {
 		this.time = time;
 		repaint();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);

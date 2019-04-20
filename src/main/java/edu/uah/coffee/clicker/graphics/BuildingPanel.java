@@ -123,6 +123,10 @@ public class BuildingPanel extends CoffeeClickerPanel {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see edu.uah.coffee.clicker.graphics.CoffeeClickerPanel#setRelativeSize(double, double)
+	 */
 	@Override
 	public void setRelativeSize(double x, double y) {
 		if (getParent() == null) {

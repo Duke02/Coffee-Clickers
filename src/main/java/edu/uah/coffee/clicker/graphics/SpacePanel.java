@@ -7,6 +7,9 @@ import javax.swing.*;
  */
 public class SpacePanel extends JPanel {
 
+	/*
+	 * constructor for the SpacePanel
+	 */
 	public SpacePanel(int width, int height) {
 		super();
 		this.add(Box.createHorizontalStrut(width));

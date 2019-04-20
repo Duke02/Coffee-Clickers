@@ -14,6 +14,9 @@ public class BuildingsPanel extends CoffeeClickerPanel {
 
 	Map<Integer, BuildingPanel> buildingPanels;
 
+	/*
+	 * constructor for the buildingPanel
+	 */
 	public BuildingsPanel() {
 		super(Constants.BUILDING_PANEL_NAME);
 
@@ -70,6 +73,10 @@ public class BuildingsPanel extends CoffeeClickerPanel {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g.create();
