@@ -5,6 +5,7 @@ import edu.uah.coffee.clicker.Constants;
 import edu.uah.coffee.clicker.Player;
 import edu.uah.coffee.clicker.graphics.BuildingPanel;
 import edu.uah.coffee.clicker.graphics.BuildingsPanel;
+import edu.uah.coffee.clicker.graphics.GamePanel;
 import edu.uah.coffee.clicker.improvements.Building;
 import edu.uah.coffee.clicker.improvements.BuildingManager;
 
@@ -88,9 +89,17 @@ public class BuildingController extends Controller implements ActionListener, Ru
 	 */
 	public void actionPerformed ( ActionEvent e ) {
 		if ( e.getActionCommand().equals( "buy" ) ) {
+			
+			
+			
 			BuildingPanel panel = ( BuildingPanel ) ( ( JButton ) e.getSource() ).getParent();
 			BuildingManager buildingManager = ( ( BuildingManager ) this.getModel( Constants.BUILDING_MANAGER_NAME ) );
-			buildingManager.buyBuilding( panel.getBuildingId(), 1 );
+			boolean didBuy = buildingManager.buyBuilding( panel.getBuildingId(), 1 );
+			if(didBuy) {
+				GamePanel gamePanel = (GamePanel) this.getView(Constants.GAME_PANEL_NAME);
+				gamePanel.addBuilding(panel.getBuildingImage());
+			
+			}
 		}
 	}
 

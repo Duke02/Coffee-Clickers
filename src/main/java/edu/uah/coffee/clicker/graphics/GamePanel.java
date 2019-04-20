@@ -19,6 +19,7 @@ public class GamePanel extends CoffeeClickerPanel {
 	private CoffeeClickerLabel currentCoffeeBeans;
 	private CoffeeClickerLabel beansPerSecond;
 
+	private ArrayList<Integer> buildingIDs = new ArrayList<Integer>();
 	private ArrayList<BufferedImage> buildings = new ArrayList<BufferedImage>();
 
 	public GamePanel() {
@@ -68,6 +69,10 @@ public class GamePanel extends CoffeeClickerPanel {
 		this.beansPerSecond.setText(String.format("Beans/second: %d", beansPerSecond));
 	}
 
+	public void addBuilding(BufferedImage image) {
+		buildings.add(image);
+	}
+	
 	public void update(double time) {
 		this.time = time;
 		repaint();
@@ -81,8 +86,8 @@ public class GamePanel extends CoffeeClickerPanel {
 		g2.drawImage(backgroundImage, 0, 0, getSize().width, getSize().height, this);
 
 		for (int i = 0; i < buildings.size(); ++i) {
-			int x = (int) ((Math.sin((1.8 + i * 0.05)) / 2.5 + 0.4) * getSize().width);
-			int y = (int) ((Math.cos((1.2 + i * 0.05)) / 7.5 + 0.575) * getSize().height);
+			int x = (int) ((Math.sin((1.8 + i * 70.05)) / 2.5 + 0.4) * getSize().width);
+			int y = (int) ((Math.cos((1.2 + i * 64.05)) / 7.5 + 0.575) * getSize().height);
 			g2.drawImage(buildings.get(i), x, y, getSize().width / 5, getSize().width / 5, this);
 		}
 
