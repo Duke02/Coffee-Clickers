@@ -8,24 +8,26 @@ public class CoffeeClickerButton extends JButton {
 	protected Point relativeLocation;
 	protected Dimension relativeSize;
 
-	/*
-	 * constructor for the CoffeeClicerButton
+	/**
+	 * Constructor for the CoffeeClicerButton
 	 */
 	public CoffeeClickerButton() {
 		setLayout(null);
 		this.relativeLocation = new Point();
 		this.relativeSize = new Dimension();
 	}
-	/*
-	 * sets the location by by percentage (0-1) rather than by pixel
-	 * @param x and y and values 0-1
+	/**
+	 * Sets the location by by percentage (0-1) rather than by pixel
+	 * @param x The new x-position (0-1)
+	 * @param y The new t-position (0-1)
 	 */
 	public void setRelativeLocation(double x, double y) {// sets the location relative to the parent
 		setLocation((int) (x * getParent().getSize().getWidth()), (int) (y * getParent().getSize().getHeight()));
 	}
-	/*
-	 * sets the size by by percentage (0-1) rather than by pixel
-	 * @param x and y and values 0-1
+	/**
+	 * Sets the size by by percentage (0-1) rather than by pixel
+	 * @param x The new width (0-1)
+	 * @param y The new height (0-1)
 	 */
 	public void setRelativeSize(double x, double y) {// sets the size relative to the parent
 		setSize((int) (x * getParent().getSize().getWidth()), (int) (y * getParent().getSize().getHeight()));
