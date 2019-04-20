@@ -43,12 +43,16 @@ public class BuildingController extends Controller implements ActionListener, Ru
 			Building building = ( Building ) o;
 			BuildingsPanel buildingsContainerPanel = ( BuildingsPanel ) this.getView( Constants.BUILDING_PANEL_NAME );
 			buildingsContainerPanel.updateBuilding( building );
+
+
 		} else if ( o instanceof BuildingManager ) {
 			BuildingManager buildingManager = ( BuildingManager ) o;
 			BuildingsPanel buildingsContainerPanel = ( BuildingsPanel ) this.getView( Constants.BUILDING_PANEL_NAME );
 			for ( Building building : buildingManager.getBuildings() ) {
 				buildingsContainerPanel.updateBuilding( building );
 			}
+			GamePanel gamePanel = ( GamePanel ) this.getView( Constants.GAME_PANEL_NAME );
+			gamePanel.setBeansPerSecond( buildingManager.getBeansPerSecond() );
 		}
 
 
@@ -73,12 +77,7 @@ public class BuildingController extends Controller implements ActionListener, Ru
 		super.addModel( model );
 		// Have all of the buildings put into the building panel view.
 		if ( model instanceof BuildingManager ) {
-			BuildingManager buildingManager = ( BuildingManager ) model;
-			BuildingsPanel buildingsContainerPanel = ( BuildingsPanel ) this.getView( Constants.BUILDING_PANEL_NAME );
-
-			for ( Building building : buildingManager.getBuildings() ) {
-				buildingsContainerPanel.updateBuilding( building );
-			}
+			this.update( model, null );
 		}
 	}
 
