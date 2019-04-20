@@ -1,12 +1,17 @@
 package edu.uah.coffee.clicker.graphics;
 
 import edu.uah.coffee.clicker.Constants;
+import edu.uah.coffee.clicker.ResourceManager;
 import edu.uah.coffee.clicker.controller.BuildingController;
 import edu.uah.coffee.clicker.controller.Controller;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Panel for displaying individual buildings.
@@ -16,9 +21,11 @@ public class BuildingPanel extends CoffeeClickerPanel {
 	private CoffeeClickerLabel buildingName;
 	private CoffeeClickerLabel cost;
 	private CoffeeClickerLabel beansPerSecond;
-	private CoffeeClickerLabel buildingImage;
+	private CoffeeClickerLabel buildingImageLabel;
 	private CoffeeClickerButton buyButton;
 	private int buildingId;
+	private String buildingImageFilePath;
+	private BufferedImage buildingImage;
 
 	public BuildingPanel () {
 		super( Constants.BUILDING_PANEL_NAME );
@@ -27,9 +34,9 @@ public class BuildingPanel extends CoffeeClickerPanel {
 		setLayout( new GridLayout( 3, 2 ) );
 		setOpaque( false );
 
-		buildingImage = new CoffeeClickerLabel();
-		buildingImage.setVisible( true );
-		add( buildingImage );
+		buildingImageLabel = new CoffeeClickerLabel();
+		buildingImageLabel.setVisible( true );
+		add( buildingImageLabel );
 
 		buildingName = new CoffeeClickerLabel();
 		buildingName.setVisible( true );
@@ -85,8 +92,23 @@ public class BuildingPanel extends CoffeeClickerPanel {
 		}
 	}
 
-	public void setBuildingImage ( String filename ) {
-		buildingImage.setIcon( new ImageIcon( filename ) );
+	public void setBuildingImageLabel ( String filename ) {
+		this.buildingImageFilePath = filename;
+		Image icon = this.readImage( ResourceManager.getFile( filename ) );
+		buildingImageLabel.setIcon( new ImageIcon( icon ) );
+	}
+
+	public BufferedImage getBuildingImage () {
+		if ( this.buildingImage == null ) {
+			try {
+				InputStream is = ResourceManager.getInputStream( this.buildingImageFilePath );
+				this.buildingImage = ImageIO.read( is );
+			} catch ( IOException e ) {
+				System.err.println( "Could not find building image at filepath " + this.buildingImageFilePath + "!" );
+				e.printStackTrace();
+			}
+		}
+		return this.buildingImage;
 	}
 
 	public void setBPS ( int bps ) {

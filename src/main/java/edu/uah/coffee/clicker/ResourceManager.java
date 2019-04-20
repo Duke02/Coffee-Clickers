@@ -11,7 +11,7 @@ public class ResourceManager {
 	 * @return an InputStreamReader at the given path.
 	 */
 	public static Reader getReader ( String filename ) {
-		InputStream is = ResourceManager.class.getResourceAsStream( filename );
+		InputStream is = ResourceManager.getInputStream( filename );
 		try {
 			if ( is.available() > 0 ) {
 
@@ -22,6 +22,10 @@ public class ResourceManager {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public static InputStream getInputStream ( String filename ) {
+		return ResourceManager.class.getResourceAsStream( filename );
 	}
 
 	/**

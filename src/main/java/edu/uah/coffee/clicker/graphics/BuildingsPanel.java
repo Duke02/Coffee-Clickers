@@ -41,8 +41,9 @@ public class BuildingsPanel extends CoffeeClickerPanel {
 		buildingPanel.setBuildingName( building.getName() );
 		buildingPanel.setNumberBought( building.getNumberBought() );
 		buildingPanel.setCost( building.getCost() + building.getCostCoefficient() );
-		buildingPanel.setBuildingImage( building.getImageFileName() );
+		buildingPanel.setBuildingImageLabel( building.getImageFileName() );
 		buildingPanel.setBPS( ( int ) building.getBeansPerSecond() );
+		buildingPanel.setBuildingImageLabel( building.getImageFileName() );
 
 		if ( ! wasIn ) {
 			for ( BuildingPanel panel : buildingPanels.values() ) {

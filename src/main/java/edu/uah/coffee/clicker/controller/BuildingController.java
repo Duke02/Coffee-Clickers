@@ -89,16 +89,15 @@ public class BuildingController extends Controller implements ActionListener, Ru
 	 */
 	public void actionPerformed ( ActionEvent e ) {
 		if ( e.getActionCommand().equals( "buy" ) ) {
-			
-			
-			
+
+
 			BuildingPanel panel = ( BuildingPanel ) ( ( JButton ) e.getSource() ).getParent();
 			BuildingManager buildingManager = ( ( BuildingManager ) this.getModel( Constants.BUILDING_MANAGER_NAME ) );
 			boolean didBuy = buildingManager.buyBuilding( panel.getBuildingId(), 1 );
-			if(didBuy) {
-				GamePanel gamePanel = (GamePanel) this.getView(Constants.GAME_PANEL_NAME);
-				gamePanel.addBuilding(panel.getBuildingImage());
-			
+			if ( didBuy ) {
+				GamePanel gamePanel = ( GamePanel ) this.getView( Constants.GAME_PANEL_NAME );
+				gamePanel.addBuilding( panel.getBuildingImage() );
+
 			}
 		}
 	}
