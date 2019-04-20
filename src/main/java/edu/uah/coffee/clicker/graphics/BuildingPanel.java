@@ -33,96 +33,102 @@ public class BuildingPanel extends CoffeeClickerPanel {
 	public BuildingPanel() {
 		super(Constants.BUILDING_PANEL_NAME);
 
-		setRelativeSize(0.1, 0.1);
-		setLayout(new GridLayout(3, 2));
-		setOpaque(false);
+		setRelativeSize( 0.1, 0.1 );
+		setLayout( new GridLayout( 3, 2 ) );
+		setOpaque( false );
 
 		buildingImageLabel = new CoffeeClickerLabel();
-		buildingImageLabel.setVisible(true);
-		add(buildingImageLabel);
+		buildingImageLabel.setVisible( true );
+		add( buildingImageLabel );
 
 		buildingName = new CoffeeClickerLabel();
-		buildingName.setVisible(true);
-		add(buildingName);
+		buildingName.setVisible( true );
+		add( buildingName );
 
 		numberBought = new CoffeeClickerLabel();
-		numberBought.setText("Owned: 0");
-		numberBought.setVisible(true);
-		add(numberBought);
+		numberBought.setText( "Owned: 0" );
+		numberBought.setVisible( true );
+		add( numberBought );
 
 		beansPerSecond = new CoffeeClickerLabel();
-		beansPerSecond.setText("Beans/sec: 0");
-		beansPerSecond.setVisible(true);
-		add(beansPerSecond);
+		beansPerSecond.setText( "Beans/sec: 0" );
+		beansPerSecond.setVisible( true );
+		add( beansPerSecond );
 
 		cost = new CoffeeClickerLabel();
-		cost.setText("Cost: 0");
-		cost.setVisible(true);
-		add(cost);
+		cost.setText( "Cost: 0" );
+		cost.setVisible( true );
+		add( cost );
 
 		buyButton = new CoffeeClickerButton();
-		buyButton.setName("buyBuilding");
-		buyButton.setText("Buy!");
-		buyButton.setVisible(true);
-		buyButton.setActionCommand("buy");
-		add(buyButton);
+		buyButton.setName( "buyBuilding" );
+		buyButton.setText( "Buy!" );
+		buyButton.setVisible( true );
+		buyButton.setActionCommand( "buy" );
+		add( buyButton );
 
 		// Set up initial building id.
-		buildingId = -1;
+		buildingId = - 1;
 	}
 
-	public void setBuildingName(String name) {
+	public void setBuildingName ( String name ) {
 		this.name = Constants.BUILDING_PANEL_NAME + name;
-		buildingName.setText(name);
+		buildingName.setText( name );
 	}
 
-	public void setNumberBought(int numBought) {
-		this.numberBought.setText(String.format("Owned: %d", numBought));
+	public void setNumberBought ( int numBought ) {
+		this.numberBought.setText( String.format( "Owned: %d", numBought ) );
 	}
 
-	public void setCost(int cost) {
-		this.cost.setText(String.format("Cost: %d", cost));
+	public void setCost ( int cost ) {
+		this.cost.setText( String.format( "Cost: %d", cost ) );
 	}
 
-	public int getBuildingId() {
+	public int getBuildingId () {
 		return buildingId;
 	}
 
-	public void setBuildingId(int id) {
-		if (buildingId == -1) {
+	public void setBuildingId ( int id ) {
+		if ( buildingId == - 1 ) {
 			// Ignore any changes to building id.
 			buildingId = id;
 		}
 	}
 
-	public void setBuildingImageLabel(String filename) {
+	public void setBuildingImageLabel ( String filename ) {
 		this.buildingImageFilePath = filename;
-		Image icon = this.readImage(ResourceManager.getFile(filename));
-		buildingImageLabel.setIcon(new ImageIcon(icon));
+		Image icon = this.readImage( ResourceManager.getFile( filename ) );
+		buildingImageLabel.setIcon( new ImageIcon( icon ) );
 	}
 
-	public BufferedImage getBuildingImage() {
-		if (this.buildingImage == null) {
+	public BufferedImage getBuildingImage () {
+		if ( this.buildingImage == null ) {
 			try {
-				InputStream is = ResourceManager.getInputStream(this.buildingImageFilePath);
-				this.buildingImage = ImageIO.read(is);
-			} catch (IOException e) {
-				System.err.println("Could not find building image at filepath " + this.buildingImageFilePath + "!");
+				InputStream is = ResourceManager.getInputStream( this.buildingImageFilePath );
+				this.buildingImage = ImageIO.read( is );
+			} catch ( IOException e ) {
+				System.err.println( "Could not find building image at filepath " + this.buildingImageFilePath + "!" );
 				e.printStackTrace();
 			}
 		}
 		return this.buildingImage;
 	}
 
-	public void setBPS(int bps) {
-		beansPerSecond.setText(String.format("Beans/sec: %d", bps));
+	public void setBPS ( int bps ) {
+		beansPerSecond.setText( String.format( "Beans/sec: %d", bps ) );
 	}
 
+	/**
+	 * In addition to the standard adding of controllers, if the given controller is a BuildingController
+	 * the view adds it as an ActionListener to buyButton.
+	 *
+	 * @param controller The controller to add.
+	 */
 	@Override
-	public void addController(Controller controller) {
-		super.addController(controller);
-		if (controller instanceof BuildingController) {
-			buyButton.addActionListener((ActionListener) controller);
+	public void addController ( Controller controller ) {
+		super.addController( controller );
+		if ( controller instanceof BuildingController ) {
+			buyButton.addActionListener( ( ActionListener ) controller );
 		}
 	}
 
@@ -131,13 +137,13 @@ public class BuildingPanel extends CoffeeClickerPanel {
 	 * @see edu.uah.coffee.clicker.graphics.CoffeeClickerPanel#setRelativeSize(double, double)
 	 */
 	@Override
-	public void setRelativeSize(double x, double y) {
-		if (getParent() == null) {
-			super.setRelativeSize(x, y);
+	public void setRelativeSize ( double x, double y ) {
+		if ( getParent() == null ) {
+			super.setRelativeSize( x, y );
 		} else {
 			Dimension parentSize = getParent().getSize();
-			relativeSize = new Dimension((int) (parentSize.width * x), (int) (parentSize.height * y));
-			setSize(relativeSize);
+			relativeSize = new Dimension( ( int ) ( parentSize.width * x ), ( int ) ( parentSize.height * y ) );
+			setSize( relativeSize );
 		}
 	}
 }
