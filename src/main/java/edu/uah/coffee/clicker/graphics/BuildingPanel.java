@@ -27,6 +27,9 @@ public class BuildingPanel extends CoffeeClickerPanel {
 	private String buildingImageFilePath;
 	private BufferedImage buildingImage;
 
+	/**
+	 * Constructor for the BuildingPanel
+	 */
 	public BuildingPanel() {
 		super(Constants.BUILDING_PANEL_NAME);
 
@@ -123,7 +126,7 @@ public class BuildingPanel extends CoffeeClickerPanel {
 		}
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see edu.uah.coffee.clicker.graphics.CoffeeClickerPanel#setRelativeSize(double, double)
 	 */

@@ -7,8 +7,8 @@ import javax.swing.*;
  */
 public class SpacePanel extends JPanel {
 
-	/*
-	 * constructor for the SpacePanel
+	/**
+	 * Constructor for the SpacePanel
 	 */
 	public SpacePanel(int width, int height) {
 		super();

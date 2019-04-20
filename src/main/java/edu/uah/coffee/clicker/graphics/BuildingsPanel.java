@@ -5,7 +5,6 @@ import edu.uah.coffee.clicker.ResourceManager;
 import edu.uah.coffee.clicker.controller.Controller;
 import edu.uah.coffee.clicker.improvements.Building;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,8 +13,8 @@ public class BuildingsPanel extends CoffeeClickerPanel {
 
 	Map<Integer, BuildingPanel> buildingPanels;
 
-	/*
-	 * constructor for the buildingPanel
+	/**
+	 * Constructor for the buildingPanel
 	 */
 	public BuildingsPanel() {
 		super(Constants.BUILDING_PANEL_NAME);
@@ -73,7 +72,7 @@ public class BuildingsPanel extends CoffeeClickerPanel {
 		}
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */

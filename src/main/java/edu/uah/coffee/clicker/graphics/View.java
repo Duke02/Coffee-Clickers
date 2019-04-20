@@ -9,12 +9,12 @@ import java.util.Map;
 
 public class View implements Runnable {
 	private static final Toolkit TOOLKIT = Toolkit.getDefaultToolkit();
-	/*
+	/**
 	 * The width of the window
 	 */
 	public static final int SCREEN_WIDTH = (int) ((double) TOOLKIT.getScreenSize().width * 0.9);
-	/*
-	 * The wheight of the window
+	/**
+	 * The weight of the window
 	 */
 	public static final int SCREEN_HEIGHT = (int) ((double) TOOLKIT.getScreenSize().height * 0.9);
 
@@ -25,8 +25,8 @@ public class View implements Runnable {
 
 	private Map<String, CoffeeClickerPanel> panels;
 
-	/*
-	 * COnstructor for the view
+	/**
+	 * Constructor for the view
 	 */
 	public View() {
 		frame = new JFrame();
@@ -46,10 +46,6 @@ public class View implements Runnable {
 		frame.setVisible(true);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see java.lang.Runnable#run()
-	 */
 	public void run() {
 		time += ((double) 1 / 60);
 		gamePanel.update(time);
