@@ -3,10 +3,12 @@ package edu.uah.coffee.clicker;
 import edu.uah.coffee.clicker.controller.BuildingController;
 import edu.uah.coffee.clicker.controller.NewsController;
 import edu.uah.coffee.clicker.controller.PlayerController;
+import edu.uah.coffee.clicker.controller.SaveGameController;
 import edu.uah.coffee.clicker.graphics.View;
 import edu.uah.coffee.clicker.improvements.BuildingManager;
 import edu.uah.coffee.clicker.news.NewsManager;
 
+import java.io.IOException;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -14,12 +16,22 @@ public class CoffeeClickerMain {
 	public static void main ( String[] args ) {
 
 		int numOfCores = 0;
-		Player player = new Player();
 
-		// Set up the building manager
-		BuildingManager buildingManager = new BuildingManager();
-		buildingManager.parseJsonFile( "/json/buildings.json" );
-		buildingManager.setPlayer( player );
+		BuildingManager buildingManager = null;
+		Player player = null;
+		try {
+			buildingManager = ( BuildingManager ) ResourceManager.readModelFromFile( Constants.SAVE_GAME_FILE_PATH );
+			player = buildingManager.getPlayer();
+		} catch ( IOException | ClassNotFoundException e ) {
+			System.out.println( "Could not find save file, so will start a new game." );
+
+			player = new Player();
+
+			// Set up the building manager
+			buildingManager = new BuildingManager();
+			buildingManager.parseJsonFile( "/json/buildings.json" );
+			buildingManager.setPlayer( player );
+		}
 
 		// Set up the news manager
 		NewsManager newsManager = new NewsManager();
@@ -46,6 +58,11 @@ public class CoffeeClickerMain {
 		buildingController.addModel( player );
 		buildingController.addView( view.getPanel( Constants.GAME_PANEL_NAME ) );
 		numOfCores++;
+
+		SaveGameController saveGameController = new SaveGameController();
+		saveGameController.addView( view.getPanel( Constants.GAME_PANEL_NAME ) );
+		// Since the buildingManager already holds Player, we don't need to change that either.
+		saveGameController.addModel( buildingManager );
 
 		view.pack();
 

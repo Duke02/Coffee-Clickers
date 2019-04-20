@@ -1,11 +1,12 @@
 package edu.uah.coffee.clicker;
 
+import java.io.Serializable;
 import java.util.Observable;
 
 /**
  * The base class for all models within the project.
  */
-public abstract class CoffeeClickerModel extends Observable {
+public abstract class CoffeeClickerModel extends Observable implements Serializable {
 
 	/**
 	 * The name for the model, to be used as a key for maps tracking the model.

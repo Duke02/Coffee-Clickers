@@ -11,6 +11,8 @@ import java.util.Observable;
 
 public class SaveGameController extends Controller implements ActionListener {
 
+	private final String saveFilePath = Constants.SAVE_GAME_FILE_PATH;
+
 	public SaveGameController () {
 		super( Constants.SAVE_GAME_CONTROLLER_NAME );
 	}
@@ -38,7 +40,7 @@ public class SaveGameController extends Controller implements ActionListener {
 	@Override
 	public void actionPerformed ( ActionEvent e ) {
 		if ( e.getActionCommand().equals( "saveGame" ) ) {
-			saveGame( "coffee-clickers.dat" );
+			saveGame( saveFilePath );
 		}
 	}
 }

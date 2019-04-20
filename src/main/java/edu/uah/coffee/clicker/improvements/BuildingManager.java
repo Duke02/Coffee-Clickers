@@ -16,6 +16,8 @@ public class BuildingManager extends AbstractManager {
 	private Map< Integer, Building > buildings;
 	protected Player player;
 
+	private static final long serialVersionUID = 999L;
+
 	/**
 	 * Creates a new building manager with the given model name from Constants.
 	 *
@@ -74,7 +76,7 @@ public class BuildingManager extends AbstractManager {
 		Building buildingToBuy = this.getBuilding( buildingId );
 		int wallet = this.player.getCoffeeBeans();
 		int numCanBuy = buildingToBuy.numberCanBuy( wallet );
-		if(numCanBuy <= 0) {
+		if ( numCanBuy <= 0 ) {
 			return false;
 		}
 		if ( numCanBuy < amount ) {
@@ -131,5 +133,9 @@ public class BuildingManager extends AbstractManager {
 			out += building.getNumberBought() * building.getBeansPerSecond();
 		}
 		return out;
+	}
+
+	public Player getPlayer () {
+		return this.player;
 	}
 }

@@ -38,7 +38,9 @@ public class ResourceManager {
 		try {
 
 			FileOutputStream fileOut = new FileOutputStream( filepath );
+
 			ObjectOutputStream objectOut = new ObjectOutputStream( fileOut );
+			System.out.println( "Saving model " + model.getModelName() + " to path " + objectOut.toString() );
 			objectOut.writeObject( model );
 			objectOut.close();
 
@@ -52,10 +54,11 @@ public class ResourceManager {
 	 * Reads a CoffeeClickerModel at the given filepath.
 	 *
 	 * @param filepath the filepath to load the model from.
-	 * @return the model if the file exists or is a model, null otherwise.
-	 * @see CoffeeClickerModel
+	 * @return the model at the given file path.
+	 * @throws IOException            if the file is not found.
+	 * @throws ClassNotFoundException if the file at the given path does not contain a model.
 	 */
-	public static CoffeeClickerModel readModelFromFile ( String filepath ) {
+	public static CoffeeClickerModel readModelFromFile ( String filepath ) throws IOException, ClassNotFoundException {
 		try {
 			FileInputStream fileIn = new FileInputStream( filepath );
 			ObjectInputStream objectIn = new ObjectInputStream( fileIn );
@@ -68,11 +71,11 @@ public class ResourceManager {
 		} catch ( IOException ex ) {
 			System.err.println( "Could not find file at path " + filepath + "!" );
 			ex.printStackTrace();
-			return null;
+			throw new IOException( "Could not find model at path " + filepath + "!" );
 		} catch ( ClassNotFoundException e ) {
 			System.err.println( "File at path " + filepath + " does not contain a model!" );
 			e.printStackTrace();
-			return null;
+			throw new ClassNotFoundException( "File at path " + filepath + " does not contain a model!" );
 		}
 	}
 
