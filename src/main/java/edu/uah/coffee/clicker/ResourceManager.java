@@ -1,13 +1,6 @@
 package edu.uah.coffee.clicker;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Reader;
-import java.io.Serializable;
+import java.io.*;
 
 public class ResourceManager {
 
@@ -30,40 +23,55 @@ public class ResourceManager {
 			return null;
 		}
 	}
-	public void WriteObjectToFile(String filepath,CoffeeClickerModel model) {
 
+	/**
+	 * Writes the provided model to a file at the given filepath.
+	 *
+	 * @param filepath the desired file path.
+	 * @param model    the model to be written.
+	 */
+	public static void writeObjectToFile ( String filepath, CoffeeClickerModel model ) {
 		try {
 
-			FileOutputStream fileOut = new FileOutputStream(filepath);
-			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-			objectOut.writeObject(model);
+			FileOutputStream fileOut = new FileOutputStream( filepath );
+			ObjectOutputStream objectOut = new ObjectOutputStream( fileOut );
+			objectOut.writeObject( model );
 			objectOut.close();
 
-		}
-		catch (Exception ex) {
+		} catch ( IOException ex ) {
+			System.out.println( "Error accessing file at path " + filepath + "!" );
 			ex.printStackTrace();
 		}
 	}
 
-	public Object ReadObjectFromFile(String filepath) {
-
+	/**
+	 * Reads a CoffeeClickerModel at the given filepath.
+	 *
+	 * @param filepath the filepath to load the model from.
+	 * @return the model if the file exists or is a model, null otherwise.
+	 * @see CoffeeClickerModel
+	 */
+	public static CoffeeClickerModel readModelFromFile ( String filepath ) {
 		try {
+			FileInputStream fileIn = new FileInputStream( filepath );
+			ObjectInputStream objectIn = new ObjectInputStream( fileIn );
 
-			FileInputStream fileIn = new FileInputStream(filepath);
-			ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-
-			Object obj = objectIn.readObject();
+			CoffeeClickerModel model = ( CoffeeClickerModel ) objectIn.readObject();
 
 			objectIn.close();
-			return obj;
+			return model;
 
-		}
-		catch (Exception ex) {
+		} catch ( IOException ex ) {
+			System.err.println( "Could not find file at path " + filepath + "!" );
 			ex.printStackTrace();
+			return null;
+		} catch ( ClassNotFoundException e ) {
+			System.err.println( "File at path " + filepath + " does not contain a model!" );
+			e.printStackTrace();
 			return null;
 		}
 	}
-}
+
 
 	/**
 	 * Gets a file at the desired path.
