@@ -9,7 +9,13 @@ import java.util.Map;
 
 public class View implements Runnable {
 	private static final Toolkit TOOLKIT = Toolkit.getDefaultToolkit();
+	/**
+	 * The width of the window
+	 */
 	public static final int SCREEN_WIDTH = ( int ) ( ( double ) TOOLKIT.getScreenSize().width * 0.9 );
+	/**
+	 * The weight of the window
+	 */
 	public static final int SCREEN_HEIGHT = ( int ) ( ( double ) TOOLKIT.getScreenSize().height * 0.9 );
 
 	private double time = 0;
@@ -19,6 +25,9 @@ public class View implements Runnable {
 
 	private Map< String, CoffeeClickerPanel > panels;
 
+	/**
+	 * Constructor for the view
+	 */
 	public View () {
 		frame = new JFrame();
 		frame.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
@@ -55,6 +64,12 @@ public class View implements Runnable {
 		}
 	}
 
+	/**
+	 * Adds the controller to the requested panel.
+	 *
+	 * @param panelName  the name of the requested panel
+	 * @param controller the controller to be added to the panel
+	 */
 	public void setController ( String panelName, Controller controller ) {
 		panels.get( panelName ).addController( controller );
 	}

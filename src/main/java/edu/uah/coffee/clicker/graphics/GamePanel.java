@@ -20,9 +20,11 @@ public class GamePanel extends CoffeeClickerPanel {
 	private CoffeeClickerLabel currentCoffeeBeans;
 	private CoffeeClickerLabel beansPerSecond;
 
-	private ArrayList< Integer > buildingIDs = new ArrayList< Integer >();
 	private ArrayList< BufferedImage > buildings = new ArrayList< BufferedImage >();
 
+	/**
+	 * Constructor for the gamePanel
+	 */
 	public GamePanel () {
 		super( Constants.GAME_PANEL_NAME );
 		setRelativeLocation( 0, 0.1 );
@@ -55,6 +57,13 @@ public class GamePanel extends CoffeeClickerPanel {
 		repaint();
 	}
 
+	/**
+	 * In addition to the standard adding of controllers to this view, this function also pairs up the
+	 * countButton and currentCoffeeBeans display to the controller if its a PlayerController and pairs the SaveGame
+	 * button to the controller if it's a SaveGameController.
+	 *
+	 * @param controller The controller to add.
+	 */
 	public void addController ( Controller controller ) {
 		super.addController( controller );
 		if ( controller.getName().equals( Constants.PLAYER_CONTROLLER_NAME ) ) {
@@ -77,11 +86,21 @@ public class GamePanel extends CoffeeClickerPanel {
 		buildings.add( image );
 	}
 
+	/**
+	 * updates the time and repaints the screen
+	 *
+	 * @param time current game time
+	 */
 	public void update ( double time ) {
 		this.time = time;
 		repaint();
 	}
 
+	/**
+	 * (non-Javadoc)
+	 *
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	@Override
 	public void paintComponent ( Graphics g ) {
 		super.paintComponent( g );

@@ -27,8 +27,11 @@ public class BuildingPanel extends CoffeeClickerPanel {
 	private String buildingImageFilePath;
 	private BufferedImage buildingImage;
 
-	public BuildingPanel () {
-		super( Constants.BUILDING_PANEL_NAME );
+	/**
+	 * Constructor for the BuildingPanel
+	 */
+	public BuildingPanel() {
+		super(Constants.BUILDING_PANEL_NAME);
 
 		setRelativeSize( 0.1, 0.1 );
 		setLayout( new GridLayout( 3, 2 ) );
@@ -115,6 +118,12 @@ public class BuildingPanel extends CoffeeClickerPanel {
 		beansPerSecond.setText( String.format( "Beans/sec: %d", bps ) );
 	}
 
+	/**
+	 * In addition to the standard adding of controllers, if the given controller is a BuildingController
+	 * the view adds it as an ActionListener to buyButton.
+	 *
+	 * @param controller The controller to add.
+	 */
 	@Override
 	public void addController ( Controller controller ) {
 		super.addController( controller );
@@ -123,6 +132,10 @@ public class BuildingPanel extends CoffeeClickerPanel {
 		}
 	}
 
+	/**
+	 * (non-Javadoc)
+	 * @see edu.uah.coffee.clicker.graphics.CoffeeClickerPanel#setRelativeSize(double, double)
+	 */
 	@Override
 	public void setRelativeSize ( double x, double y ) {
 		if ( getParent() == null ) {

@@ -10,6 +10,9 @@ public class NewsPanel extends CoffeeClickerPanel {
 	private JLabel newsHeadingLabel;
 	private JLabel currentNewsLabel;
 
+	/**
+	 * Constructor for the news panel
+	 */
 	public NewsPanel() {
 		super(Constants.NEWS_PANEL_NAME);
 		setRelativeLocation(0, 0);
@@ -27,7 +30,7 @@ public class NewsPanel extends CoffeeClickerPanel {
 		currentNewsLabel.setText("");
 		currentNewsLabel.setVisible(true);
 		add(currentNewsLabel, BorderLayout.CENTER);
-		
+
 		backgroundImage = readImage(ResourceManager.getFile("/images/background2.png"));
 		repaint();
 	}
@@ -35,13 +38,17 @@ public class NewsPanel extends CoffeeClickerPanel {
 	public void setNews(String text) {
 		currentNewsLabel.setText(text);
 	}
-	
+
+	/**
+	 * (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g.create();
 
 		g2.drawImage(backgroundImage, 0, 0, getSize().width, getSize().height, this);
-		
+
 		g2.dispose();
 	}
 }
